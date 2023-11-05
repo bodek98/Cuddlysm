@@ -8,12 +8,12 @@ public class PlayerEntity : Entity
     {
     }
     
-    void Start()
+    private void Start()
     {
         
     }
     
-    void Update()
+    private void Update()
     {
 
     }
