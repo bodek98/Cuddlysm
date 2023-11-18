@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PlayerEntity _player;
     [SerializeField] private PlayerHealthBar _playerHealthBar;
-    private int lastPlayerHealth, lastPlayerMaxHealth;
+    private float lastPlayerHealth, lastPlayerMaxHealth;
 
     private void Awake()
     {
@@ -24,17 +24,17 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        handlePlayerHealth();
+        HandlePlayerHealth();
     }
 
-    private void handlePlayerHealth()
+    private void HandlePlayerHealth()
     {
-        if (!healthChanged()) return;
+        if (!HealthChanged()) return;
         
         _playerHealthBar.UpdateHealthBar(_player.Health, _player.MaxHealth);
     }
 
-    private bool healthChanged()
+    private bool HealthChanged()
     {
         return _player.Health == lastPlayerHealth || _player.MaxHealth == lastPlayerMaxHealth;
     }

@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerEntity : Entity
+public class EnemyEntity : Entity
 {
-    public PlayerEntity() : base(100, 100)
+    [SerializeField] private Image _healthBar;
+    
+    public EnemyEntity() : base(100, 100)
     {
     }
-
+    
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch
@@ -21,12 +24,18 @@ public class PlayerEntity : Entity
 
     protected override void HandleAfterDamage()
     {
-    }
-    
-    protected override void DeathAnimation()
-    {
-        Debug.Log("Player is dead :(");
+        UpdateHealthBar();
     }
 
+    protected override void DeathAnimation()
+    {
+        Debug.Log("Enemy is dead :)");
+    }
+    
     // New functions
+    
+    private void UpdateHealthBar()
+    {
+        _healthBar.fillAmount = _currentHealth / _maxHealth ;
+    }
 }
