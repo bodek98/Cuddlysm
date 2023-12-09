@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8345996357125294500}
   - component: {fileID: 3632881616205119772}
   - component: {fileID: 6019499440749703650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192935011666788634}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 80
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 26814926749839840}
   - component: {fileID: 5025259792542644737}
   - component: {fileID: 8938451038405982860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
