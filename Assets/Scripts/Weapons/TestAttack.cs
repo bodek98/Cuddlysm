@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class TestAttack : MonoBehaviour
 {
-    [SerializeField] private float _attackDelay = 1;
-    private float _nextTimeToAttack = 0;
     private Weapon _weapon;
 
     private void Start()
@@ -16,9 +14,6 @@ public class TestAttack : MonoBehaviour
 
     void Update()
     {
-        if (Time.time < _nextTimeToAttack) return;
-        
-        _nextTimeToAttack += _attackDelay;
         _weapon.Attack();
     }
 }
