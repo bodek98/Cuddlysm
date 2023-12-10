@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private Weapon _weapon;
+    [SerializeField] private bool singleFire = false;
+    private bool isMouseButtonPressed = false;
 
     private void Start()
     {
@@ -14,9 +16,28 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
-        _weapon.Attack();
+            isMouseButtonPressed = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isMouseButtonPressed = false;
+        }
+
+        if (singleFire)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _weapon.Attack();
+            }
+        } else
+        {
+            if (isMouseButtonPressed)
+            {
+                _weapon.Attack();
+            }
         }
     }
 }
