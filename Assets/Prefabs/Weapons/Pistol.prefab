@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3299165521919591047}
   - component: {fileID: 5055594814461294129}
-  - component: {fileID: -3028835801597699649}
   m_Layer: 6
   m_Name: Pistol
   m_TagString: Untagged
@@ -51,18 +50,6 @@ MonoBehaviour:
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
   _attackDelay: 0.1
---- !u!114 &-3028835801597699649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676635122060752464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579448327ecddce4f815599684f55147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4259256211145523424
 GameObject:
   m_ObjectHideFlags: 0

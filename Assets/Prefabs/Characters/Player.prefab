@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8345996357125294500}
   - component: {fileID: 3632881616205119772}
   - component: {fileID: 6019499440749703650}
+  - component: {fileID: 1076217619670132053}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 566481e6fc03ac94e8cb91e2420c4d89, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 2a1233fdc4680674fa998f9df022ac3a, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -182,6 +183,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1076217619670132053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192935011666788634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5f49d75fdcb334a8d0da429b4ff5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedWeapon: 0
+  _weaponHolder: {fileID: 8275433862987287228}
 --- !u!1 &7524790559343228916
 GameObject:
   m_ObjectHideFlags: 0
