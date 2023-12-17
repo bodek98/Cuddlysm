@@ -22,11 +22,6 @@ public class Movement : MonoBehaviour
         _mainCamera = FindObjectOfType<Camera>();
     }
 
-    private void Update()
-    {
-        Vector2 moveInput = _moveAction.ReadValue<Vector2>();
-        _direction = new Vector3(moveInput.x, 0, moveInput.y);
-    }
     void FixedUpdate()
     {
         _rb.MovePosition(transform.position + _direction * speed * Time.deltaTime);
@@ -41,5 +36,10 @@ public class Movement : MonoBehaviour
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+    }
+    void OnMovement(InputValue value)
+    {
+        Vector2 moveInput = value.Get<Vector2>();
+        _direction = new Vector3(moveInput.x, 0, moveInput.y);
     }
 }
