@@ -12,6 +12,8 @@ public class WeaponHandling : MonoBehaviour
     private ProjectileWeapon _projectileWeapon;
     private PlayerInput _playerInput;
 
+    public InputActionReference weaponShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,23 +21,39 @@ public class WeaponHandling : MonoBehaviour
         SelectWeapon();
     }
 
-    void OnWeaponShoot(InputValue value)
+    private void OnEnable()
     {
-        string fireMode = _projectileWeapon.FireMode;
+        weaponShoot.action.Enable();
+        weaponShoot.action.performed += OnButtonPressed;
+        weaponShoot.action.canceled += OnButtonReleased;
+    }
 
-        if (fireMode == "single")
-        {
-            _projectileWeapon.Attack();
+    private void OnDisable()
+    {
+        weaponShoot.action.Disable();
+        weaponShoot.action.performed -= OnButtonPressed;
+        weaponShoot.action.canceled -= OnButtonReleased;
+    }
 
-        } else if (fireMode == "auto")
+    private void OnButtonPressed(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
         {
-            Debug.Log("auto");
+            _projectileWeapon.StartFire();
+        }
+    }
+
+    private void OnButtonReleased(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() < 0.5f)
+        {
+            _projectileWeapon.StopFire();
         }
     }
 
     void OnWeaponReloading(InputValue value)
     {
-        Debug.Log("reload");
+            Debug.Log("reloading");
     }
 
     void OnWeaponScrollSelection(InputValue value)
@@ -66,6 +84,7 @@ public class WeaponHandling : MonoBehaviour
                 break;
         }
 
+        _projectileWeapon.StopFire();
         SelectWeapon();
     }
 
@@ -74,6 +93,7 @@ public class WeaponHandling : MonoBehaviour
         float numericalSelection = value.Get<float>();
         _selectedWeapon = numericalSelection - 1;
 
+        _projectileWeapon.StopFire();
         SelectWeapon();
     }
 
