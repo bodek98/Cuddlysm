@@ -51,6 +51,9 @@ MonoBehaviour:
   _projectileForce: 100
   _attackDelay: 0.5
   _fireMode: auto
+  _currentAmmo: 0
+  _magazineCapacity: 30
+  _maxAmmoStorage: 90
 --- !u!1 &4259256211145523424
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private float _attackDelay = 1;
     [SerializeField] private string _fireMode = "single";
 
-    public bool _isFiring = false;
+    [SerializeField] private float _currentAmmo;
+    [SerializeField] private float _magazineCapacity;
+    [SerializeField] private float _maxAmmoStorage;
 
     private float _nextTimeToAttack = 0;
 
@@ -19,18 +21,13 @@ public class ProjectileWeapon : Weapon
         set { _fireMode = value; }
     }
 
-    public override void Attack()
+    private void Start()
     {
-        if (Time.time < _nextTimeToAttack) return;
-        _nextTimeToAttack += _attackDelay;
-
-        GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
-        newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
+        _currentAmmo = _magazineCapacity;
     }
 
     public void StartFire()
     {
-        _isFiring = true;
         if (_fireMode == "single")
         {
             Attack();
@@ -48,10 +45,47 @@ public class ProjectileWeapon : Weapon
 
     public void StopFire()
     {
-        _isFiring = false;
         if (_fireMode == "auto")
         {
             CancelInvoke("Attack");
         }
     }
+
+    public void ReloadMagazine()
+    {
+        if (_maxAmmoStorage > 0)
+        {
+            if (_currentAmmo <= _maxAmmoStorage)
+            {
+                _maxAmmoStorage = _maxAmmoStorage - (_magazineCapacity - _currentAmmo);
+                _currentAmmo = _magazineCapacity;
+            } else
+            {
+                _currentAmmo = _maxAmmoStorage + _currentAmmo;
+                _maxAmmoStorage = 0;
+            }
+        }
+    }
+
+    public override void Attack()
+    {
+        if (_currentAmmo > 0)
+        {   
+            FireProjectile();
+            _currentAmmo--;
+        } else
+        {
+            ReloadMagazine();
+        }
+    }
+    private void FireProjectile()
+    {
+        if (Time.time < _nextTimeToAttack) return;
+        _nextTimeToAttack += _attackDelay;
+
+        GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
+        newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
+    }
+
+
 }

@@ -53,7 +53,7 @@ public class WeaponHandling : MonoBehaviour
 
     void OnWeaponReloading(InputValue value)
     {
-            Debug.Log("reloading");
+            _projectileWeapon.ReloadMagazine();
     }
 
     void OnWeaponScrollSelection(InputValue value)
