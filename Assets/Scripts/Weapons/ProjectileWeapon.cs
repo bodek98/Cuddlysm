@@ -7,7 +7,7 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private GameObject _muzzle;
     [SerializeField] private float _projectileForce = 1;
     [SerializeField] private float _attackDelay = 1;
-    [SerializeField] private string _fireMode = "single";
+    [SerializeField] private FireModes _fireMode = FireModes.Single;
 
     [SerializeField] private float _currentAmmo;
     [SerializeField] private float _magazineCapacity;
@@ -15,10 +15,11 @@ public class ProjectileWeapon : Weapon
 
     private float _nextTimeToAttack = 0;
 
-    public string FireMode
+    enum FireModes
     {
-        get { return _fireMode; }
-        set { _fireMode = value; }
+        Single,
+        Burst,
+        FullAuto
     }
 
     private void Start()
@@ -28,24 +29,28 @@ public class ProjectileWeapon : Weapon
 
     public void StartFire()
     {
-        if (_fireMode == "single")
+        switch (_fireMode)
         {
-            Attack();
-        } else if (_fireMode == "burst")
-        {
-            for (global::System.Int32 i = 0; i < 3; i++)
-            {
+            case FireModes.Single:
                 Attack();
-            }
-        } else if (_fireMode == "auto")
-        {
-            InvokeRepeating("Attack", 0f, _attackDelay);
+                break;
+
+            case FireModes.Burst:
+                for (global::System.Int32 i = 0; i < 3; i++)
+                {
+                    Attack();
+                }
+                break;
+
+            case FireModes.FullAuto:
+                InvokeRepeating("Attack", 0f, _attackDelay);
+                break;
         }
     }
 
     public void StopFire()
     {
-        if (_fireMode == "auto")
+        if (_fireMode == FireModes.FullAuto)
         {
             CancelInvoke("Attack");
         }
@@ -86,6 +91,4 @@ public class ProjectileWeapon : Weapon
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
     }
-
-
 }

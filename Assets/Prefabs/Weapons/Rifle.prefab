@@ -50,7 +50,7 @@ MonoBehaviour:
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
   _attackDelay: 0.5
-  _fireMode: auto
+  _fireMode: 2
   _currentAmmo: 0
   _magazineCapacity: 30
   _maxAmmoStorage: 90
