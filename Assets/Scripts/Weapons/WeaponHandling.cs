@@ -12,7 +12,7 @@ public class WeaponHandling : MonoBehaviour
     private ProjectileWeapon _projectileWeapon;
     private PlayerInput _playerInput;
 
-    public InputActionReference weaponShoot;
+    public InputActionReference weaponShootAction;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +23,16 @@ public class WeaponHandling : MonoBehaviour
 
     private void OnEnable()
     {
-        weaponShoot.action.Enable();
-        weaponShoot.action.performed += OnButtonPressed;
-        weaponShoot.action.canceled += OnButtonReleased;
+        weaponShootAction.action.Enable();
+        weaponShootAction.action.performed += OnButtonPressed;
+        weaponShootAction.action.canceled += OnButtonReleased;
     }
 
     private void OnDisable()
     {
-        weaponShoot.action.Disable();
-        weaponShoot.action.performed -= OnButtonPressed;
-        weaponShoot.action.canceled -= OnButtonReleased;
+        weaponShootAction.action.Disable();
+        weaponShootAction.action.performed -= OnButtonPressed;
+        weaponShootAction.action.canceled -= OnButtonReleased;
     }
 
     private void OnButtonPressed(InputAction.CallbackContext context)

@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
+
     void OnMovement(InputValue value)
     {
         Vector2 moveInput = value.Get<Vector2>();
