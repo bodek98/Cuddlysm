@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedWeapon: 0
   _weaponHolder: {fileID: 8275433862987287228}
-  weaponShoot: {fileID: -6933786509725638180, guid: 2a1233fdc4680674fa998f9df022ac3a, type: 3}
+  weaponShootAction: {fileID: -6933786509725638180, guid: 2a1233fdc4680674fa998f9df022ac3a, type: 3}
 --- !u!1 &7524790559343228916
 GameObject:
   m_ObjectHideFlags: 0

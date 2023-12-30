@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class WeaponHandling : MonoBehaviour
 {
 
-    [SerializeField] private float _selectedWeapon = 0;
+    [SerializeField] private int _selectedWeapon = 0;
     [SerializeField] private GameObject _weaponHolder;
 
     private ProjectileWeapon _projectileWeapon;
@@ -58,7 +58,7 @@ public class WeaponHandling : MonoBehaviour
 
     void OnWeaponScrollSelection(InputValue value)
     {
-        float scrollDeltaY = value.Get<float>();
+        int scrollDeltaY = (int)value.Get<float>();
 
         switch (scrollDeltaY)
         {
@@ -90,11 +90,14 @@ public class WeaponHandling : MonoBehaviour
 
     void OnWeaponNumericalSelection(InputValue value)
     {
-        float numericalSelection = value.Get<float>();
-        _selectedWeapon = numericalSelection - 1;
+        int numericalSelection = (int)value.Get<float>();
 
-        _projectileWeapon.StopFire();
-        SelectWeapon();
+        if (numericalSelection >= 1 && numericalSelection <= _weaponHolder.transform.childCount)
+        {
+            _selectedWeapon = numericalSelection - 1;
+            _projectileWeapon.StopFire();
+            SelectWeapon();
+        } 
     }
 
     private void SelectWeapon()
