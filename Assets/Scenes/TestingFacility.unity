@@ -5345,10 +5345,6 @@ PrefabInstance:
       value: ProjectileWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: df19af58259865943910ce60934bf052, type: 3}
-      propertyPath: m_LocalScale.y
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299165521919591047, guid: df19af58259865943910ce60934bf052, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
