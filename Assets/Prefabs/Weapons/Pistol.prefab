@@ -49,7 +49,8 @@ MonoBehaviour:
   _projectile: {fileID: 2202571852718020547, guid: 3cd425649130524449673ecec37dbbcb, type: 3}
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
-  _attackDelay: 0.3
+  _attackDelay: 1
+  _burstDelay: 0.05
   _fireMode: 1
   _magazineAmmo: 15
   _magazineCapacity: 15

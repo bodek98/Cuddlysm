@@ -8,7 +8,8 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private GameObject _projectile;
     [SerializeField] private GameObject _muzzle;
     [SerializeField] private float _projectileForce = 1;
-    [SerializeField] private float _attackDelay = 1;
+    [SerializeField] private float _attackDelay = 0.1f;
+    [SerializeField] private float _burstDelay = 0.05f;
     [SerializeField] private FireMode _fireMode = FireMode.Single;
 
     [SerializeField] private int _magazineAmmo;
@@ -20,14 +21,22 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private float _reloadDuration = 2.5f;
     private float _timeOfFinishedReload = 0.0f;
     private bool _isReloading = false;
+    private bool _isBursting = false;
 
     private float _nextTimeToAttack = 0;
+
+    private IEnumerator _fullAutoCoroutine;
 
     private enum FireMode
     {
         Single,
         Burst,
         FullAuto
+    }
+
+    public void Start()
+    {
+        _fullAutoCoroutine = FireFullAuto();
     }
 
     private void OnEnable()
@@ -48,7 +57,7 @@ public class ProjectileWeapon : Weapon
                 break;
 
             case FireMode.FullAuto:
-                InvokeRepeating(nameof(FireProjectile), 0f, _attackDelay);
+                StartCoroutine(_fullAutoCoroutine);
                 break;
         }
     }
@@ -57,7 +66,7 @@ public class ProjectileWeapon : Weapon
     {
         if (_fireMode == FireMode.FullAuto)
         {
-            CancelInvoke(nameof(FireProjectile));
+            StopCoroutine(_fullAutoCoroutine);
         }
     }
 
@@ -69,18 +78,35 @@ public class ProjectileWeapon : Weapon
 
     private IEnumerator FireBurst()
     {
+        if (Time.time < _nextTimeToAttack || _isBursting) yield break;
+        _isBursting = true;
+
         for (int i = 0; i < 3; i++)
         {
+            FireProjectile(true);
+            yield return new WaitForSeconds(_burstDelay);
+        }
+
+        _isBursting = false;
+        _nextTimeToAttack += _attackDelay;
+    }
+
+    private IEnumerator FireFullAuto()
+    {
+        while (true)
+        {
             FireProjectile();
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(_attackDelay);
         }
     }
 
-    private void FireProjectile()
+    private void FireProjectile(bool ignoreAttackDelay = false)
     {
-        if (_magazineAmmo <= 0 || Time.time < _nextTimeToAttack || _isReloading) return;
+        bool isReadyToShoot = ignoreAttackDelay || Time.time >= _nextTimeToAttack;
+        if (_magazineAmmo <= 0 || !isReadyToShoot || _isReloading) return;
+        if (!ignoreAttackDelay) _nextTimeToAttack += _attackDelay;
+        
         _magazineAmmo--;
-        _nextTimeToAttack += _attackDelay;
 
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
