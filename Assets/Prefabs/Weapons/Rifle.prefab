@@ -49,11 +49,13 @@ MonoBehaviour:
   _projectile: {fileID: 2202571852718020547, guid: 3cd425649130524449673ecec37dbbcb, type: 3}
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
-  _attackDelay: 0.5
+  _attackDelay: 0.1
   _fireMode: 2
-  _currentAmmo: 0
+  _magazineAmmo: 30
   _magazineCapacity: 30
-  _maxAmmoStorage: 90
+  _storageAmmo: 300
+  _storageAmmoCapacity: 300
+  _reloadDuration: 2.5
 --- !u!1 &4259256211145523424
 GameObject:
   m_ObjectHideFlags: 0

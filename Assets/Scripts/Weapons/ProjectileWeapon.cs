@@ -7,42 +7,57 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private GameObject _muzzle;
     [SerializeField] private float _projectileForce = 1;
     [SerializeField] private float _attackDelay = 1;
-    [SerializeField] private FireModes _fireMode = FireModes.Single;
+    [SerializeField] private FireMode _fireMode = FireMode.Single;
 
-    [SerializeField] private float _currentAmmo;
-    [SerializeField] private float _magazineCapacity;
-    [SerializeField] private float _maxAmmoStorage;
+    [SerializeField] private int _magazineAmmo;
+    [SerializeField] private int _magazineCapacity;
+    [SerializeField] private int _storageAmmo;
+    // to uncomment during ammo picking up functionality development 
+    // [SerializeField] private int _storageAmmoCapacity;
+
+    [SerializeField] private float _reloadDuration = 2.5f;
+    private float _timeOfFinishedReload = 0.0f;
+    private bool _isReloading = false;
 
     private float _nextTimeToAttack = 0;
 
-    enum FireModes
+    private enum FireMode
     {
         Single,
         Burst,
         FullAuto
     }
 
-    private void Start()
+    public override void Attack()
     {
-        _currentAmmo = _magazineCapacity;
+        if (_isReloading) return;
+
+        if (_magazineAmmo > 0)
+        {
+            FireProjectile();
+        }
+        if (_magazineAmmo == 0 && _storageAmmo > 0)
+        {
+            HandleReload();
+        }
     }
 
     public void StartFire()
     {
         switch (_fireMode)
         {
-            case FireModes.Single:
+            case FireMode.Single:
                 Attack();
                 break;
 
-            case FireModes.Burst:
+            case FireMode.Burst:
                 for (global::System.Int32 i = 0; i < 3; i++)
                 {
                     Attack();
                 }
                 break;
 
-            case FireModes.FullAuto:
+            case FireMode.FullAuto:
                 InvokeRepeating("Attack", 0f, _attackDelay);
                 break;
         }
@@ -50,7 +65,7 @@ public class ProjectileWeapon : Weapon
 
     public void StopFire()
     {
-        if (_fireMode == FireModes.FullAuto)
+        if (_fireMode == FireMode.FullAuto)
         {
             CancelInvoke("Attack");
         }
@@ -58,34 +73,33 @@ public class ProjectileWeapon : Weapon
 
     public void ReloadMagazine()
     {
-        if (_maxAmmoStorage > 0)
+        int missingAmmo = _magazineCapacity - _magazineAmmo;
+
+        if (missingAmmo < _storageAmmo)
         {
-            if (_currentAmmo <= _maxAmmoStorage)
-            {
-                _maxAmmoStorage = _maxAmmoStorage - (_magazineCapacity - _currentAmmo);
-                _currentAmmo = _magazineCapacity;
-            } else
-            {
-                _currentAmmo = _maxAmmoStorage + _currentAmmo;
-                _maxAmmoStorage = 0;
-            }
+            _magazineAmmo += missingAmmo;
+            _storageAmmo -= missingAmmo;
         }
+        else
+        {
+            _magazineAmmo += _storageAmmo;
+            _storageAmmo = 0;
+        }
+        
+        _isReloading = false;
     }
 
-    public override void Attack()
+    private void HandleReload()
     {
-        if (_currentAmmo > 0)
-        {   
-            FireProjectile();
-            _currentAmmo--;
-        } else
-        {
-            ReloadMagazine();
-        }
+        Debug.Log("Reloading");
+        _isReloading = true;
+        Invoke("ReloadMagazine", _reloadDuration);
     }
+    
     private void FireProjectile()
     {
         if (Time.time < _nextTimeToAttack) return;
+        _magazineAmmo--;
         _nextTimeToAttack += _attackDelay;
 
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
