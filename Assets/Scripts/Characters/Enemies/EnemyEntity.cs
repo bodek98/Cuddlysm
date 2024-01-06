@@ -6,11 +6,7 @@ using UnityEngine.UI;
 public class EnemyEntity : Entity
 {
     [SerializeField] private Image _healthBar;
-    
-    public EnemyEntity() : base(100, 100)
-    {
-    }
-    
+
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch

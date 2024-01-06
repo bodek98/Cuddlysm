@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8919820924516588848}
   - component: {fileID: 6240939047049125622}
   - component: {fileID: 3391414122182616838}
-  - component: {fileID: 646220286794462328}
+  - component: {fileID: 5234609422879062991}
   - component: {fileID: 8799196110437737998}
   m_Layer: 8
   m_Name: Turret
@@ -87,7 +87,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &646220286794462328
+--- !u!114 &5234609422879062991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 192935011666788634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1010a60434d618e458ec483001601f3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8089af264e76b1c4e869eaef8ac6d95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 243920367700217962}
