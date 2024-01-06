@@ -85,9 +85,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!33 &3632881616205119772
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 3078508950825997587}
   - component: {fileID: 26814926749839840}
   - component: {fileID: 5025259792542644737}
-  - component: {fileID: 8938451038405982860}
   m_Layer: 8
   m_Name: Front
   m_TagString: Untagged
@@ -235,27 +234,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8938451038405982860
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7524790559343228916}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3428467301432506892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 8815075294901445839, guid: 115f2596596e1d843b004b370a99faae, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815075294901445839, guid: 115f2596596e1d843b004b370a99faae, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8930626129360006780, guid: 115f2596596e1d843b004b370a99faae, type: 3}
       propertyPath: m_AnchorMax.x
