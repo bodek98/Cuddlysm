@@ -19,7 +19,6 @@ public class ProjectileWeapon : Weapon
     // [SerializeField] private int _storageAmmoCapacity;
 
     [SerializeField] private float _reloadDuration = 2.5f;
-    private float _timeOfFinishedReload = 0.0f;
     private bool _isReloading = false;
     private bool _isBursting = false;
 
