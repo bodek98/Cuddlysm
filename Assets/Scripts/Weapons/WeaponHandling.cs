@@ -53,7 +53,7 @@ public class WeaponHandling : MonoBehaviour
 
     void OnWeaponReloading(InputValue value)
     {
-        _weapon.Reload();
+        StartCoroutine(_weapon.Reload());
     }
 
     void OnWeaponScrollSelection(InputValue value)
