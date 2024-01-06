@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private Camera _mainCamera;
 
     [SerializeField] private float speed = 5.0f;
+    [SerializeField] private GameObject _weaponHolder;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class Movement : MonoBehaviour
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.yellow);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            _weaponHolder.transform.LookAt(new Vector3(pointToLook.x, _weaponHolder.transform.position.y, pointToLook.z));
         }
     }
 

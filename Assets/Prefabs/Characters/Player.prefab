@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  _weaponHolder: {fileID: 8275433862987287228}
 --- !u!33 &3632881616205119772
 MeshFilter:
   m_ObjectHideFlags: 0
