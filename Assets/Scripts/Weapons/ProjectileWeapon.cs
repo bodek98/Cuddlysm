@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class ProjectileWeapon : Weapon
@@ -30,48 +31,62 @@ public class ProjectileWeapon : Weapon
 
     public override void Attack()
     {
-        if (_isReloading) return;
-
-        if (_magazineAmmo > 0)
-        {
-            FireProjectile();
-        }
-        if (_magazineAmmo == 0 && _storageAmmo > 0)
-        {
-            HandleReload();
-        }
-    }
-
-    public void StartFire()
-    {
         switch (_fireMode)
         {
             case FireMode.Single:
-                Attack();
+                FireProjectile();
                 break;
 
             case FireMode.Burst:
-                for (global::System.Int32 i = 0; i < 3; i++)
-                {
-                    Attack();
-                }
+                StartCoroutine(FireBurst());
                 break;
 
             case FireMode.FullAuto:
-                InvokeRepeating("Attack", 0f, _attackDelay);
+                InvokeRepeating(nameof(FireProjectile), 0f, _attackDelay);
                 break;
         }
     }
 
-    public void StopFire()
+    public override void StopAttack()
     {
         if (_fireMode == FireMode.FullAuto)
         {
-            CancelInvoke("Attack");
+            CancelInvoke(nameof(FireProjectile));
         }
     }
 
-    public void ReloadMagazine()
+    public override void Reload()
+    {
+        _isReloading = true;
+        Invoke(nameof(HandleReload), _reloadDuration);
+    }
+
+    private IEnumerator FireBurst()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            FireProjectile();
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    private void FireProjectile()
+    {
+        if (_magazineAmmo <= 0 || Time.time < _nextTimeToAttack || _isReloading) return;
+        _magazineAmmo--;
+        _nextTimeToAttack += _attackDelay;
+
+        GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
+        newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
+
+        // Auto reload
+        if (_magazineAmmo == 0 && _storageAmmo > 0)
+        {
+            Reload();
+        }
+    }
+
+    private void HandleReload()
     {
         int missingAmmo = _magazineCapacity - _magazineAmmo;
 
@@ -85,24 +100,7 @@ public class ProjectileWeapon : Weapon
             _magazineAmmo += _storageAmmo;
             _storageAmmo = 0;
         }
-        
+
         _isReloading = false;
-    }
-
-    private void HandleReload()
-    {
-        Debug.Log("Reloading");
-        _isReloading = true;
-        Invoke("ReloadMagazine", _reloadDuration);
-    }
-    
-    private void FireProjectile()
-    {
-        if (Time.time < _nextTimeToAttack) return;
-        _magazineAmmo--;
-        _nextTimeToAttack += _attackDelay;
-
-        GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
-        newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
     }
 }

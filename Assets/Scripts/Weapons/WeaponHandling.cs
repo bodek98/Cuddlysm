@@ -9,51 +9,51 @@ public class WeaponHandling : MonoBehaviour
     [SerializeField] private int _selectedWeapon = 0;
     [SerializeField] private GameObject _weaponHolder;
 
-    private ProjectileWeapon _projectileWeapon;
+    private Weapon _weapon;
     private PlayerInput _playerInput;
 
-    public InputActionReference weaponShootAction;
+    public InputActionReference weaponAttackAction;
 
     // Start is called before the first frame update
     void Start()
     {
-        _projectileWeapon = GetComponent<ProjectileWeapon>();
+        _weapon = GetComponent<Weapon>();
         SelectWeapon();
     }
 
     private void OnEnable()
     {
-        weaponShootAction.action.Enable();
-        weaponShootAction.action.performed += OnButtonPressed;
-        weaponShootAction.action.canceled += OnButtonReleased;
+        weaponAttackAction.action.Enable();
+        weaponAttackAction.action.performed += OnAttackPressed;
+        weaponAttackAction.action.canceled += OnAttackReleased;
     }
 
     private void OnDisable()
     {
-        weaponShootAction.action.Disable();
-        weaponShootAction.action.performed -= OnButtonPressed;
-        weaponShootAction.action.canceled -= OnButtonReleased;
+        weaponAttackAction.action.Disable();
+        weaponAttackAction.action.performed -= OnAttackPressed;
+        weaponAttackAction.action.canceled -= OnAttackReleased;
     }
 
-    private void OnButtonPressed(InputAction.CallbackContext context)
+    private void OnAttackPressed(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() > 0.5f)
         {
-            _projectileWeapon.StartFire();
+            _weapon.Attack();
         }
     }
 
-    private void OnButtonReleased(InputAction.CallbackContext context)
+    private void OnAttackReleased(InputAction.CallbackContext context)
     {
         if (context.ReadValue<float>() < 0.5f)
         {
-            _projectileWeapon.StopFire();
+            _weapon.StopAttack();
         }
     }
 
     void OnWeaponReloading(InputValue value)
     {
-            _projectileWeapon.ReloadMagazine();
+        _weapon.Reload();
     }
 
     void OnWeaponScrollSelection(InputValue value)
@@ -84,7 +84,7 @@ public class WeaponHandling : MonoBehaviour
                 break;
         }
 
-        _projectileWeapon.StopFire();
+        _weapon.StopAttack();
         SelectWeapon();
     }
 
@@ -95,7 +95,7 @@ public class WeaponHandling : MonoBehaviour
         if (numericalSelection >= 1 && numericalSelection <= _weaponHolder.transform.childCount)
         {
             _selectedWeapon = numericalSelection - 1;
-            _projectileWeapon.StopFire();
+            _weapon.StopAttack();
             SelectWeapon();
         } 
     }
@@ -108,7 +108,7 @@ public class WeaponHandling : MonoBehaviour
             if (i == _selectedWeapon)
             {
                 projectileWeapon.gameObject.SetActive(true);
-                _projectileWeapon = projectileWeapon.GetComponent<ProjectileWeapon>();
+                _weapon = projectileWeapon.GetComponent<Weapon>();
             }
             else
             {

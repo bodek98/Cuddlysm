@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WeaponShootAction",
+                    "name": "WeaponAttack",
                     "type": "Button",
                     "id": "30193539-673d-4bd4-bf99-e21a94c047a4",
                     "expectedControlType": "Button",
@@ -246,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "WeaponShootAction",
+                    "action": "WeaponAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
