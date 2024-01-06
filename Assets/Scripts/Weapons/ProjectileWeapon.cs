@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileWeapon : Weapon
@@ -27,6 +28,11 @@ public class ProjectileWeapon : Weapon
         Single,
         Burst,
         FullAuto
+    }
+
+    private void OnEnable()
+    {
+        CheckAutoReload();
     }
 
     public override void Attack()
@@ -79,7 +85,11 @@ public class ProjectileWeapon : Weapon
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
 
-        // Auto reload
+        CheckAutoReload();
+    }
+
+    private void CheckAutoReload()
+    {
         if (_magazineAmmo == 0 && _storageAmmo > 0)
         {
             Reload();
@@ -88,17 +98,20 @@ public class ProjectileWeapon : Weapon
 
     private void HandleReload()
     {
-        int missingAmmo = _magazineCapacity - _magazineAmmo;
+        if (transform.GameObject().activeSelf)
+        {
+            int missingAmmo = _magazineCapacity - _magazineAmmo;
 
-        if (missingAmmo < _storageAmmo)
-        {
-            _magazineAmmo += missingAmmo;
-            _storageAmmo -= missingAmmo;
-        }
-        else
-        {
-            _magazineAmmo += _storageAmmo;
-            _storageAmmo = 0;
+            if (missingAmmo < _storageAmmo)
+            {
+                _magazineAmmo += missingAmmo;
+                _storageAmmo -= missingAmmo;
+            }
+            else
+            {
+                _magazineAmmo += _storageAmmo;
+                _storageAmmo = 0;
+            }
         }
 
         _isReloading = false;
