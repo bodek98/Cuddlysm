@@ -127,6 +127,7 @@ public class ProjectileWeapon : Weapon
         _magazineAmmo--;
 
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
+        newProjectile.layer = gameObject.layer;
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
 
         CheckAutoReload();
