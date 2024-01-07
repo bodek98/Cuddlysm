@@ -5157,10 +5157,6 @@ PrefabInstance:
       value: ProjectileWeaponEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: d16201ff47c97bf4c9d3f081d21ac7f1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299165521919591047, guid: d16201ff47c97bf4c9d3f081d21ac7f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5343,10 +5339,6 @@ PrefabInstance:
     - target: {fileID: 1676635122060752464, guid: df19af58259865943910ce60934bf052, type: 3}
       propertyPath: m_Name
       value: ProjectileWeapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299165521919591047, guid: df19af58259865943910ce60934bf052, type: 3}
-      propertyPath: m_LocalScale.y
-      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: df19af58259865943910ce60934bf052, type: 3}
       propertyPath: m_LocalPosition.x

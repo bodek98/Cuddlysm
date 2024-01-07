@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684c1592001c7f84a9cfa5b0f944e633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 2202571852718020547, guid: 3cd425649130524449673ecec37dbbcb, type: 3}
+  _projectile: {fileID: 2202571852718020547, guid: 8b7596a44da6c4b4baa0bb39663278d5, type: 3}
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
   _attackDelay: 1
+  _burstDelay: 0.05
   _fireMode: 0
   _magazineAmmo: 5
   _magazineCapacity: 5
   _storageAmmo: 25
-  _storageAmmoCapacity: 25
   _reloadDuration: 2.5
 --- !u!1 &4259256211145523424
 GameObject:
