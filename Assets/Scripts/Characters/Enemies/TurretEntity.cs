@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretEntity : EnemyEntity
 {
+
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch
@@ -13,5 +14,10 @@ public class TurretEntity : EnemyEntity
             DamageDealerType.Knife => false,
             _ => false
         };
+    }
+
+    void Update()
+    {
+        
     }
 }

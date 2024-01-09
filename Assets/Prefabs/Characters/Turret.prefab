@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8089af264e76b1c4e869eaef8ac6d95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 200
+  _currentHealth: 200
   _healthBar: {fileID: 243920367700217962}
 --- !u!114 &8799196110437737998
 MonoBehaviour:
@@ -112,10 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5156a11603fcb5343bfb11f3c527a92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 10
   _head: {fileID: 6969275755007997100}
   _weapon: {fileID: 4462619766066732139}
-  _gunHeight: 2.25
+  _rotationSpeed: 10
   _aggroDistance: 5
 --- !u!1 &3791328234050428643
 GameObject:
@@ -419,10 +420,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5055594814461294129, guid: 4fb6ad6288ef73b41aa9c7945b372d5f, type: 3}
-      propertyPath: _projectile
-      value: 
-      objectReference: {fileID: 2202571852718020547, guid: eef20a4dd0e0a0d4bb0466bc76830fe4, type: 3}
     - target: {fileID: 8420959663178242207, guid: 4fb6ad6288ef73b41aa9c7945b372d5f, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.5

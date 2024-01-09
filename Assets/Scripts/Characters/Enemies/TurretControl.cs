@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretMovement : MonoBehaviour
+public class TurretControl : MonoBehaviour
 {
+    private Weapon _projectileWeapon;
     private Transform _playerTransform;
     private float _distance;
 
@@ -14,6 +15,7 @@ public class TurretMovement : MonoBehaviour
 
     void Start()
     {
+        _projectileWeapon = _weapon.GetComponent<Weapon>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -33,6 +35,12 @@ public class TurretMovement : MonoBehaviour
 
             _head.transform.rotation = Quaternion.LookRotation(new Vector3(newHeadDirection.x, 0, newHeadDirection.z));
             _weapon.transform.rotation = Quaternion.LookRotation(newWeaponDirection);
+
+            float playerTurretAngle = Vector3.Angle(targetWeaponDirection, newWeaponDirection);
+            if (playerTurretAngle < 5.0f)
+            {
+                _projectileWeapon.Attack();
+            }
         }
     }
 }

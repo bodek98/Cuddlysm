@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3299165521919591047}
   - component: {fileID: 5055594814461294129}
-  - component: {fileID: 8569732283970648527}
   m_Layer: 8
   m_Name: Turret Gun
   m_TagString: Untagged
@@ -78,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684c1592001c7f84a9cfa5b0f944e633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 2202571852718020547, guid: 3cd425649130524449673ecec37dbbcb, type: 3}
+  _projectile: {fileID: 2202571852718020547, guid: 9e9554e593bea914a8670129dca7ac13, type: 3}
   _muzzle: {fileID: 811475100103156387}
   _projectileForce: 100
   _attackDelay: 3
@@ -88,18 +87,6 @@ MonoBehaviour:
   _magazineCapacity: 9
   _storageAmmo: 36
   _reloadDuration: 2.5
---- !u!114 &8569732283970648527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676635122060752464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9af25e12a489048b10789f7fffb43e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5441308771757305492
 GameObject:
   m_ObjectHideFlags: 0
