@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class TurretControl : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class TurretControl : MonoBehaviour
     private Transform _playerTransform;
     private float _distance;
 
+    [TagField]
+    [SerializeField] private string _targetTag;
     [SerializeField] private GameObject _head;
     [SerializeField] private GameObject _weapon;
     [SerializeField] private float _rotationSpeed = 1.0f;
@@ -16,7 +19,7 @@ public class TurretControl : MonoBehaviour
     void Start()
     {
         _projectileWeapon = _weapon.GetComponent<Weapon>();
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerTransform = GameObject.FindGameObjectWithTag(_targetTag).transform;
     }
 
     void Update()
