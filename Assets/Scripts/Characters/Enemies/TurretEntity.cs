@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TurretEntity : EnemyEntity
 {
 
@@ -14,10 +15,5 @@ public class TurretEntity : EnemyEntity
             DamageDealerType.Knife => false,
             _ => false
         };
-    }
-
-    void Update()
-    {
-        
     }
 }
