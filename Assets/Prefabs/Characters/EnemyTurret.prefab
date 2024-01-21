@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3391414122182616838}
   - component: {fileID: 5234609422879062991}
   - component: {fileID: 8799196110437737998}
+  - component: {fileID: 8803861365070439061}
   m_Layer: 8
   m_Name: EnemyTurret
   m_TagString: Enemy
@@ -118,7 +119,29 @@ MonoBehaviour:
   _head: {fileID: 6969275755007997100}
   _weapon: {fileID: 4462619766066732139}
   _rotationSpeed: 10
-  _aggroDistance: 5
+--- !u!136 &8803861365070439061
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192935011666788634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 951
+  m_LayerOverridePriority: 10
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3791328234050428643
 GameObject:
   m_ObjectHideFlags: 0

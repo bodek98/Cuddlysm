@@ -6,44 +6,82 @@ using Cinemachine;
 public class TurretControl : MonoBehaviour
 {
     private Weapon _projectileWeapon;
-    private Transform _playerTransform;
-    private float _distance;
+    private List<GameObject> _targetList = new List<GameObject>();
+    private GameObject _currentTarget;
 
     [TagField]
     [SerializeField] private string _targetTag;
     [SerializeField] private GameObject _head;
     [SerializeField] private GameObject _weapon;
     [SerializeField] private float _rotationSpeed = 1.0f;
-    [SerializeField] private float _aggroDistance;
+
 
     void Start()
     {
         _projectileWeapon = _weapon.GetComponent<Weapon>();
-        _playerTransform = GameObject.FindGameObjectWithTag(_targetTag).transform;
     }
 
     void Update()
     {
-        _distance = Vector3.Distance(_playerTransform.position, transform.position);
+        if (_currentTarget)
+        {
+            TurretStep();
+        } else
+        {
+            FindNearestTarget();
+        }
+    }
 
-        if (_distance <= _aggroDistance) {
+    private void TurretStep()
+    {
             float singleStep = _rotationSpeed * Time.deltaTime;
 
-            Vector3 playerHeadPostion = _playerTransform.position + new Vector3(0, 1.5f, 0);
-            Vector3 targetHeadDirection = playerHeadPostion - _head.transform.position;
-            Vector3 targetWeaponDirection = playerHeadPostion - _weapon.transform.position;
+            Vector3 targetHeadPosition = _currentTarget.transform.position + new Vector3(0, 1.5f, 0);
+            Vector3 aimTurretDirection = targetHeadPosition - _head.transform.position;
+            Vector3 aimWeaponDirection = targetHeadPosition - _weapon.transform.position;
 
-            Vector3 newHeadDirection = Vector3.RotateTowards(_head.transform.forward, targetHeadDirection, singleStep, 0.0f);
-            Vector3 newWeaponDirection = Vector3.RotateTowards(_weapon.transform.forward, targetWeaponDirection, singleStep, 0.0f);
+            Vector3 newTurretDirection = Vector3.RotateTowards(_head.transform.forward, aimTurretDirection, singleStep, 0.0f);
+            Vector3 newWeaponDirection = Vector3.RotateTowards(_weapon.transform.forward, aimWeaponDirection, singleStep, 0.0f);
 
-            _head.transform.rotation = Quaternion.LookRotation(new Vector3(newHeadDirection.x, 0, newHeadDirection.z));
+            _head.transform.rotation = Quaternion.LookRotation(new Vector3(newTurretDirection.x, 0, newTurretDirection.z));
             _weapon.transform.rotation = Quaternion.LookRotation(newWeaponDirection);
 
-            float playerTurretAngle = Vector3.Angle(targetWeaponDirection, newWeaponDirection);
-            if (playerTurretAngle < 5.0f)
+            float targetTurretAngle = Vector3.Angle(aimWeaponDirection, newWeaponDirection);
+            if (targetTurretAngle < 5.0f)
             {
                 _projectileWeapon.Attack();
             }
+    }
+
+    private void FindNearestTarget()
+    {
+        float minimalDistance = float.PositiveInfinity;
+
+        _targetList.ForEach(target =>
+        {
+            if (!target) return;
+            
+            float distance = Vector3.Distance(target.transform.position, transform.position);
+
+            if (distance < minimalDistance)
+            {
+                minimalDistance = distance;
+                _currentTarget = target;
+            }
+        });
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _targetList.Add(other.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetInstanceID() == _currentTarget.GetInstanceID())
+        {
+            _currentTarget = null;
         }
+        _targetList.Remove(other.gameObject);
     }
 }

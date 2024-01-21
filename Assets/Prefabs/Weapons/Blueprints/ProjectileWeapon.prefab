@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3299165521919591047}
   - component: {fileID: 5055594814461294129}
   - component: {fileID: 2174623618537502099}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ProjectileWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,11 +51,11 @@ MonoBehaviour:
   _muzzle: {fileID: 4259256211145523424}
   _projectileForce: 100
   _attackDelay: 1
+  _burstDelay: 0.05
   _fireMode: 0
   _magazineAmmo: 100
   _magazineCapacity: 100
   _storageAmmo: 900000000
-  _storageAmmoCapacity: 900000000
   _reloadDuration: 2.5
 --- !u!114 &2174623618537502099
 MonoBehaviour:
@@ -78,7 +78,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5595892115636367965}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 9179167489818246819}
   - component: {fileID: 4956090182515341033}
   - component: {fileID: 6596392241852166463}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
