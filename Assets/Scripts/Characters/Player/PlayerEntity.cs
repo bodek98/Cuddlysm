@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
-    public PlayerEntity() : base(100, 100)
-    {
-    }
-
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch

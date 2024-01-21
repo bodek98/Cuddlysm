@@ -7,8 +7,8 @@ public abstract class Entity : MonoBehaviour
     private Dictionary<DamageDealerType, float> _damageCooldownDict;
     private const float _damageCooldownDuration = 1.0f; // in seconds
 
-    protected float _maxHealth;
-    protected float _currentHealth;
+    [SerializeField] protected float _maxHealth = 100;
+    [SerializeField] protected float _currentHealth = 100;
     
     public enum DamageDealerType
     {
@@ -18,12 +18,6 @@ public abstract class Entity : MonoBehaviour
     public float Health => _currentHealth;
 
     public float MaxHealth => _maxHealth;
-
-    protected Entity(int currentHealth, int maxHealth)
-    {
-        _currentHealth = currentHealth;
-        _maxHealth = maxHealth;
-    }
     
     private void Start()
     {
