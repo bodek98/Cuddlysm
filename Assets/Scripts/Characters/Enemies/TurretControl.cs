@@ -36,7 +36,7 @@ public class TurretControl : MonoBehaviour
     {
             float singleStep = _rotationSpeed * Time.deltaTime;
 
-            Vector3 targetHeadPosition = _currentTarget.transform.position + new Vector3(0, 1.5f, 0);
+            Vector3 targetHeadPosition = _currentTarget.transform.position ;
             Vector3 aimTurretDirection = targetHeadPosition - _head.transform.position;
             Vector3 aimWeaponDirection = targetHeadPosition - _weapon.transform.position;
 
