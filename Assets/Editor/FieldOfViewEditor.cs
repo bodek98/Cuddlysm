@@ -17,7 +17,7 @@ public class FieldOfViewEditor : Editor
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleLeft * fov.radius);
         Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleRight * fov.radius);
 
-        if (fov.isPlayerVisible)
+        if (fov.isTargetVisible)
         {
             Handles.color = Color.green;
             Handles.DrawLine(fov.transform.position, fov.currentTarget.transform.position);

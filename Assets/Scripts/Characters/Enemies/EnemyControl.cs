@@ -6,18 +6,28 @@ using UnityEngine.AI;
 public class EnemyControl : MonoBehaviour
 {
     private NavMeshAgent _agent;
-    [SerializeField] private GameObject _player;
-    // Start is called before the first frame update
+    private FieldOfView _fov;
+    private bool _needsToInspectLastPosition;
+
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _fov = GetComponent<FieldOfView>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!_player) return;
-        
-        _agent.destination = _player.transform.position;
+        if (!_fov.currentTarget) return;
+
+        if (_fov.isTargetVisible)
+        {
+            _agent.destination = _fov.currentTarget.transform.position;
+            _needsToInspectLastPosition = true;
+        }
+        else if (_needsToInspectLastPosition)
+        {
+            _agent.destination = _fov.lastSeenPosition;
+            _needsToInspectLastPosition = false;
+        }
     }
 }

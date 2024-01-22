@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-
     [Range(0, 360)]
     public float angle;
     public float radius;
-    public bool isPlayerVisible;
+    public bool isTargetVisible;
+    public Vector3 lastSeenPosition;
     public GameObject currentTarget;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
-
 
     void Start()
     {
@@ -34,19 +33,12 @@ public class FieldOfView : MonoBehaviour
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, _targetMask);
-        float minimalDistance = float.PositiveInfinity;
 
         if (rangeChecks.Length != 0)
         {
-            foreach (Collider rangeCheck in rangeChecks)
+            if (!isTargetVisible)
             {
-                float distance = Vector3.Distance(rangeCheck.transform.position, transform.position);
-
-                if (distance < minimalDistance)
-                {
-                    minimalDistance = distance;
-                    currentTarget = rangeCheck.gameObject;
-                }
+                FindNearestTarget(rangeChecks);
             }
             
             Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
@@ -57,18 +49,35 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
-                    isPlayerVisible = true;
+                    isTargetVisible = true;
+                    lastSeenPosition = currentTarget.transform.position;
                 } else
                 {
-                    isPlayerVisible = false;
+                    isTargetVisible = false;
                 }
             } else
             {
-                isPlayerVisible = false;
+                isTargetVisible = false;
             }
-        } else if (isPlayerVisible)
+        } else if (isTargetVisible)
         {
-            isPlayerVisible = false;
+            isTargetVisible = false;
+        }
+    }
+
+    private void FindNearestTarget(Collider[] rangeChecks)
+    {
+        float minimalDistance = float.PositiveInfinity;
+
+        foreach (Collider rangeCheck in rangeChecks)
+        {
+            float distance = Vector3.Distance(rangeCheck.transform.position, transform.position);
+
+            if (distance < minimalDistance)
+            {
+                minimalDistance = distance;
+                currentTarget = rangeCheck.gameObject;
+            }
         }
     }
 }
