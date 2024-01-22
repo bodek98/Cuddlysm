@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 90389118}
   - component: {fileID: 90389117}
   - component: {fileID: 90389116}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 318885277}
   - component: {fileID: 318885276}
   - component: {fileID: 318885275}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1643,7 @@ GameObject:
   - component: {fileID: 641915613}
   - component: {fileID: 641915612}
   - component: {fileID: 641915617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
