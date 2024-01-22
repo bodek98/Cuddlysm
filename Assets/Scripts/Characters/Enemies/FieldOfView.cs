@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    public GameObject player;
 
     [Range(0, 360)]
     public float angle;
     public float radius;
     public bool isPlayerVisible;
+    public GameObject currentTarget;
 
     [SerializeField] private LayerMask _targetMask;
     [SerializeField] private LayerMask _obstructionMask;
@@ -17,8 +17,6 @@ public class FieldOfView : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(player);
         StartCoroutine(FOVRoutine());
     }
 
@@ -36,15 +34,26 @@ public class FieldOfView : MonoBehaviour
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, _targetMask);
+        float minimalDistance = float.PositiveInfinity;
 
         if (rangeChecks.Length != 0)
         {
-            Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            foreach (Collider rangeCheck in rangeChecks)
+            {
+                float distance = Vector3.Distance(rangeCheck.transform.position, transform.position);
+
+                if (distance < minimalDistance)
+                {
+                    minimalDistance = distance;
+                    currentTarget = rangeCheck.gameObject;
+                }
+            }
+            
+            Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                float distanceToTarget = Vector3.Distance(transform.position, currentTarget.transform.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructionMask))
                 {
