@@ -10,6 +10,9 @@ public abstract class EnemyBaseController : MonoBehaviour
     private NavMeshAgent _agent;
     private bool _needsToInspectLastPosition;
 
+    [SerializeField] private float _followTimeTreshHold = 1;
+    [SerializeField] private float _safeDistanceToPlayer = 5;
+    [SerializeField] private float _rotationStep = 5;
     [SerializeField] private float _searchRange = 10;
     [SerializeField] private GameObject _weapon;
 
@@ -22,7 +25,9 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void Update()
     {
-        if (fov.currentTarget && fov.isTargetVisible)
+        Debug.Log(fov.targetLastSeenTimestamp);
+        
+        if ((fov.currentTarget && fov.isTargetVisible) || WasTargetRecentlySeen())
         {
             HeadToTarget();
             AttackTarget();
@@ -39,18 +44,34 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void HeadToTarget()
     {
-        _agent.destination = CalculateDestination();
+        _agent.stoppingDistance = _safeDistanceToPlayer;
+        _agent.SetDestination(fov.currentTarget.transform.position);
+
+        if (_agent.remainingDistance < _agent.stoppingDistance)
+        {
+            _agent.updateRotation = false;
+            FaceTarget(fov.currentTarget.transform.position);
+        }
+        else
+        {
+            _agent.updateRotation = true;
+        }
+
         _needsToInspectLastPosition = true;
     }
 
     void InspectLastPosition()
     {
-        _agent.destination = fov.lastSeenPosition;
+        _agent.updateRotation = true;
+        _agent.stoppingDistance = 0;
+        _agent.SetDestination(fov.lastSeenPosition);
         _needsToInspectLastPosition = false;
     }
 
     void SearchTarget()
     {
+        _agent.updateRotation = true;
+        _agent.stoppingDistance = 0;
         Vector3 searchDestination;
         if (RandomPoint(fov.lastSeenPosition, _searchRange, out searchDestination))
         {
@@ -72,7 +93,21 @@ public abstract class EnemyBaseController : MonoBehaviour
         return false;
     }
 
-    protected abstract Vector3 CalculateDestination();
+    private void FaceTarget(Vector3 destination)
+    {
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0;
+
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        float interpolationRatio = Mathf.Clamp(_rotationStep * Time.deltaTime, 0, 1);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, interpolationRatio);
+    }
+
+    private bool WasTargetRecentlySeen()
+    {
+        return Time.time < fov.targetLastSeenTimestamp + _followTimeTreshHold;
+    }
 
     protected abstract void AttackTarget();
 }

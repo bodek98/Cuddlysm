@@ -162,9 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4da3761a57e66d4c94953aba5ca74c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _safeDistanceToPlayer: 8
+  _rotationStep: 10
   _searchRange: 10
   _weapon: {fileID: 2151615597088453239}
-  _safeDistanceToPlayer: 5
 --- !u!1 &245727520481034446
 GameObject:
   m_ObjectHideFlags: 0

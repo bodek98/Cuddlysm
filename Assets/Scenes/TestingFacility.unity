@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4033,9 +4033,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1944713761405622449, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
-      propertyPath: angle
-      value: 120
+    - target: {fileID: 4177758113995258269, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
+      propertyPath: m_Acceleration
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177758113995258269, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791911203564902015, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
+      propertyPath: _followTimeTreshHold
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
       propertyPath: m_LocalPosition.x

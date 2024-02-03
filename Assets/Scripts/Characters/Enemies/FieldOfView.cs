@@ -9,6 +9,7 @@ public class FieldOfView : MonoBehaviour
     public float radius;
     public bool isTargetVisible;
     public Vector3 lastSeenPosition;
+    public float targetLastSeenTimestamp;
     public GameObject currentTarget;
 
     [SerializeField] private LayerMask _targetMask;
@@ -16,6 +17,7 @@ public class FieldOfView : MonoBehaviour
 
     void Start()
     {
+        targetLastSeenTimestamp = float.NegativeInfinity;
         lastSeenPosition = transform.position;
         StartCoroutine(FOVRoutine());
     }
@@ -52,6 +54,7 @@ public class FieldOfView : MonoBehaviour
                 {
                     isTargetVisible = true;
                     lastSeenPosition = currentTarget.transform.position;
+                    targetLastSeenTimestamp = Time.time;
                 } else
                 {
                     isTargetVisible = false;

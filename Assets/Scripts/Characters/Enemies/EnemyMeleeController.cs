@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class EnemyMeleeController : EnemyBaseController
 {
-    protected override Vector3 CalculateDestination()
-    {
-        return fov.currentTarget.transform.position;
-    }
-
     protected override void AttackTarget()
     {
 
