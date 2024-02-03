@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 478315256941333224}
   - component: {fileID: 4177758113995258269}
   - component: {fileID: 1944713761405622449}
+  - component: {fileID: 7791911203564902015}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: Ranged Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,6 +150,19 @@ MonoBehaviour:
   _obstructionMask:
     serializedVersion: 2
     m_Bits: 1280
+--- !u!114 &7791911203564902015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192935011666788634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4da3761a57e66d4c94953aba5ca74c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _safeDistanceToPlayer: 5
 --- !u!1 &5733910500230464631
 GameObject:
   m_ObjectHideFlags: 0
