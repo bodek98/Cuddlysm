@@ -3968,14 +3968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 192935011666788634, guid: 347f3d20a0069744381c7a5b50bba10b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1944713761405622449, guid: 347f3d20a0069744381c7a5b50bba10b, type: 3}
-      propertyPath: _angle
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 347f3d20a0069744381c7a5b50bba10b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -4037,18 +4029,6 @@ PrefabInstance:
     - target: {fileID: 192935011666788634, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177758113995258269, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
-      propertyPath: m_Acceleration
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177758113995258269, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 7791911203564902015, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
-      propertyPath: _followTimeTreshHold
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: c0ec5dc00b5de9b48a8f06281459a489, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4292,14 +4272,6 @@ PrefabInstance:
     - target: {fileID: 192935011666788634, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_Name
       value: Enemy Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 192935011666788634, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8803861365070439061, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 1975
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5344,14 +5316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 192935011666788634, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935712878814029959, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 1783
-      objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.08
@@ -5537,10 +5501,6 @@ PrefabInstance:
     - target: {fileID: 192935011666788634, guid: e807bc3ccef00884f8f75d5eeb23805b, type: 3}
       propertyPath: m_Name
       value: Melee Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1475675149472284867, guid: e807bc3ccef00884f8f75d5eeb23805b, type: 3}
-      propertyPath: _safeDistanceToPlayer
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: e807bc3ccef00884f8f75d5eeb23805b, type: 3}
       propertyPath: m_LocalPosition.x
