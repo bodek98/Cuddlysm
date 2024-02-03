@@ -108,11 +108,12 @@ public class ProjectileWeapon : Weapon
         _isBursting = false;
         _nextTimeToAttack += _attackDelay;
     }
-
+    
     private IEnumerator FireFullAuto()
     {
         while (true)
         {
+            // Todo: Ensure delay in case of stopping coroutine
             FireProjectile();
             yield return new WaitForSeconds(_attackDelay);
         }
@@ -122,14 +123,13 @@ public class ProjectileWeapon : Weapon
     {
         bool isReadyToShoot = ignoreAttackDelay || Time.time >= _nextTimeToAttack;
         if (_magazineAmmo <= 0 || !isReadyToShoot || _isReloading) return;
-        if (!ignoreAttackDelay) _nextTimeToAttack += _attackDelay;
-        
+        if (!ignoreAttackDelay) _nextTimeToAttack = Time.time + _attackDelay;
+
         _magazineAmmo--;
 
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
         newProjectile.layer = gameObject.layer;
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
-
         CheckAutoReload();
     }
 
