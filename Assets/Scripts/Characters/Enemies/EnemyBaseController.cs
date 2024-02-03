@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public abstract class EnemyBaseController : MonoBehaviour
 {
     protected FieldOfView fov;
-    protected Weapon projectileWeapon;
+    protected Weapon weapon;
     private NavMeshAgent _agent;
     private bool _needsToInspectLastPosition;
 
@@ -14,12 +14,13 @@ public abstract class EnemyBaseController : MonoBehaviour
     [SerializeField] private float _safeDistanceToPlayer = 5;
     [SerializeField] private float _rotationStep = 5;
     [SerializeField] private float _searchRange = 10;
-    [SerializeField] private GameObject _weapon;
+    [SerializeField] private GameObject _weaponObject;
+    [SerializeField] protected GameObject weaponHolder;
 
     void Start()
     {
         fov = GetComponent<FieldOfView>();
-        projectileWeapon = _weapon.GetComponent<Weapon>();
+        weapon = _weaponObject.GetComponent<Weapon>();
         _agent = GetComponent<NavMeshAgent>();
     }
 

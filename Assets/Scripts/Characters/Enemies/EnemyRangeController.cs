@@ -11,7 +11,10 @@ public class EnemyRangeController : EnemyBaseController
 
         if (enemyTargetAngle < 5.0f)
         {
-            projectileWeapon.Attack();
+            Vector3 pointToLook = fov.currentTarget.transform.position;
+            weaponHolder.transform.LookAt(new Vector3(pointToLook.x, weaponHolder.transform.position.y, pointToLook.z));
+
+            weapon.Attack();
         }
         // Todo: Stop attack when weapon is full-auto.
     }
