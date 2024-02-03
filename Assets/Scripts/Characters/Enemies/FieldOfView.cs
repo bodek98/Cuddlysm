@@ -16,6 +16,7 @@ public class FieldOfView : MonoBehaviour
 
     void Start()
     {
+        lastSeenPosition = transform.position;
         StartCoroutine(FOVRoutine());
     }
 
