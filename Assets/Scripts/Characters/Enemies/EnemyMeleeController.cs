@@ -8,4 +8,9 @@ public class EnemyMeleeController : EnemyBaseController
     {
         return fov.currentTarget.transform.position;
     }
+
+    protected override void AttackTarget()
+    {
+
+    }
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 2202571852718020547, guid: 8b7596a44da6c4b4baa0bb39663278d5, type: 3}
   _muzzle: {fileID: 4259256211145523424}
-  _projectileForce: 100
+  _projectileForce: 20
   _attackDelay: 1
   _burstDelay: 0.05
   _fireMode: 0

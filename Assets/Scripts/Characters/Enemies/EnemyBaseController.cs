@@ -5,23 +5,27 @@ using UnityEngine.AI;
 
 public abstract class EnemyBaseController : MonoBehaviour
 {
-    [SerializeField] private float _searchRange = 10;
-
-    private NavMeshAgent _agent;
     protected FieldOfView fov;
+    protected Weapon projectileWeapon;
+    private NavMeshAgent _agent;
     private bool _needsToInspectLastPosition;
+
+    [SerializeField] private float _searchRange = 10;
+    [SerializeField] private GameObject _weapon;
 
     void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
+        projectileWeapon = _weapon.GetComponent<Weapon>();
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
         if (fov.currentTarget && fov.isTargetVisible)
         {
-            WalkToTarget();
+            HeadToTarget();
+            AttackTarget();
         }
         else if (_needsToInspectLastPosition)
         {
@@ -33,7 +37,7 @@ public abstract class EnemyBaseController : MonoBehaviour
         }
     }
 
-    void WalkToTarget()
+    void HeadToTarget()
     {
         _agent.destination = CalculateDestination();
         _needsToInspectLastPosition = true;
@@ -69,4 +73,6 @@ public abstract class EnemyBaseController : MonoBehaviour
     }
 
     protected abstract Vector3 CalculateDestination();
+
+    protected abstract void AttackTarget();
 }

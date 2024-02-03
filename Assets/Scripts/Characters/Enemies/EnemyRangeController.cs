@@ -12,4 +12,16 @@ public class EnemyRangeController : EnemyBaseController
 
         return Vector3.Lerp(transform.position, fov.currentTarget.transform.position, interpolationRatio);
     }
+
+    protected override void AttackTarget()
+    {
+        Vector3 directionToTarget = (fov.currentTarget.transform.position - transform.position).normalized;
+        float enemyTargetAngle = Vector3.Angle(directionToTarget, transform.forward);
+
+        if (enemyTargetAngle < 5.0f)
+        {
+            projectileWeapon.Attack();
+        }
+        // Todo: Stop attack when weapon is full-auto.
+    }
 }
