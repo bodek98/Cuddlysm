@@ -7,24 +7,24 @@ public abstract class Entity : MonoBehaviour
     private Dictionary<DamageDealerType, float> _damageCooldownDict;
     private const float _damageCooldownDuration = 1.0f; // in seconds
 
-    [SerializeField] protected float _maxHealth = 100;
+    [SerializeField] public float maxHealth = 100;
     [SerializeField] protected float _currentHealth = 100;
     
     public enum DamageDealerType
     {
-        Acid, Bullet, Knife
+        Acid, Bullet, Knife, Explosive
     }
 
     public float Health => _currentHealth;
 
-    public float MaxHealth => _maxHealth;
+    public float MaxHealth => maxHealth;
     
     private void Start()
     {
         _damageCooldownDict = new Dictionary<DamageDealerType, float>();
     }
 
-    public void DamageEntity(int damage, DamageDealerType damageDealerType)
+    public void DamageEntity(float damage, DamageDealerType damageDealerType)
     {
         if (_currentHealth <= 0 || !CheckIfVulnerable(damageDealerType)) return;
         _currentHealth -= damage;
@@ -40,12 +40,12 @@ public abstract class Entity : MonoBehaviour
 
     public void HealEntity(int heal)
     {
-        if (_currentHealth >= _maxHealth) return;
+        if (_currentHealth >= maxHealth) return;
         _currentHealth += heal;
 
-        if (_currentHealth > _maxHealth)
+        if (_currentHealth > maxHealth)
         {
-            _currentHealth = _maxHealth;
+            _currentHealth = maxHealth;
         }
     }
     
