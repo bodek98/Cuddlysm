@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1944713761405622449}
   - component: {fileID: 1475675149472284867}
   m_Layer: 8
-  m_Name: Melee Enemy
+  m_Name: Kamikaze Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

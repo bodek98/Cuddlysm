@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMeleeController : EnemyBaseController
+public class EnemyKamikazeController : EnemyBaseController
 {
     protected override void AttackTarget()
     {
