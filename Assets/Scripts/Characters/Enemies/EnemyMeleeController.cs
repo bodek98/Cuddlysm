@@ -6,6 +6,12 @@ public class EnemyMeleeController : EnemyBaseController
 {
     protected override void AttackTarget()
     {
-        Debug.Log("Ide po ciebie");
+        if (agent.remainingDistance < 1)
+        {
+            weapon.Attack();
+
+            gameObject.TryGetComponent<Entity>(out Entity entityComponent);
+            entityComponent.DamageEntity(entityComponent.maxHealth, Entity.DamageDealerType.Explosive);
+        }
     }
 }

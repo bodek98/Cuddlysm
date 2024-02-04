@@ -7,7 +7,7 @@ public abstract class EnemyBaseController : MonoBehaviour
 {
     protected FieldOfView fov;
     protected Weapon weapon;
-    private NavMeshAgent _agent;
+    protected NavMeshAgent agent;
     private bool _needsToInspectLastPosition;
 
     [SerializeField] private float _followTimeTreshHold = 1;
@@ -21,13 +21,11 @@ public abstract class EnemyBaseController : MonoBehaviour
     {
         fov = GetComponent<FieldOfView>();
         weapon = _weaponObject.GetComponent<Weapon>();
-        _agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        Debug.Log(fov.targetLastSeenTimestamp);
-        
         if ((fov.currentTarget && fov.isTargetVisible) || WasTargetRecentlySeen())
         {
             HeadToTarget();
@@ -37,7 +35,7 @@ public abstract class EnemyBaseController : MonoBehaviour
         {
             InspectLastPosition();
         }
-        else if (_agent.remainingDistance < 1)
+        else if (agent.remainingDistance < 1)
         {
             SearchTarget();
         }
@@ -45,17 +43,17 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void HeadToTarget()
     {
-        _agent.stoppingDistance = _safeDistanceToPlayer;
-        _agent.SetDestination(fov.currentTarget.transform.position);
+        agent.stoppingDistance = _safeDistanceToPlayer;
+        agent.SetDestination(fov.currentTarget.transform.position);
 
-        if (_agent.remainingDistance < _agent.stoppingDistance)
+        if (agent.remainingDistance < agent.stoppingDistance)
         {
-            _agent.updateRotation = false;
+            agent.updateRotation = false;
             FaceTarget(fov.currentTarget.transform.position);
         }
         else
         {
-            _agent.updateRotation = true;
+            agent.updateRotation = true;
         }
 
         _needsToInspectLastPosition = true;
@@ -63,20 +61,20 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void InspectLastPosition()
     {
-        _agent.updateRotation = true;
-        _agent.stoppingDistance = 0;
-        _agent.SetDestination(fov.lastSeenPosition);
+        agent.updateRotation = true;
+        agent.stoppingDistance = 0;
+        agent.SetDestination(fov.lastSeenPosition);
         _needsToInspectLastPosition = false;
     }
 
     void SearchTarget()
     {
-        _agent.updateRotation = true;
-        _agent.stoppingDistance = 0;
+        agent.updateRotation = true;
+        agent.stoppingDistance = 0;
         Vector3 searchDestination;
         if (RandomPoint(fov.lastSeenPosition, _searchRange, out searchDestination))
         {
-            _agent.SetDestination(searchDestination);
+            agent.SetDestination(searchDestination);
         }
     }
 

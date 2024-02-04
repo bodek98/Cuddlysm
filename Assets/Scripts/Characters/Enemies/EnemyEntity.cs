@@ -32,6 +32,6 @@ public class EnemyEntity : Entity
     
     private void UpdateHealthBar()
     {
-        _healthBar.fillAmount = _currentHealth / _maxHealth ;
+        _healthBar.fillAmount = _currentHealth / maxHealth ;
     }
 }
