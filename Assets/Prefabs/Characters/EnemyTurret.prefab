@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8089af264e76b1c4e869eaef8ac6d95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 200
-  _currentHealth: 200
+  maxHealth: 100
+  currentHealth: 100
+  deathPrefab: {fileID: 5285586489234936084, guid: 52c7ba836c09e794597dc2dd3ad4b855, type: 3}
   _healthBar: {fileID: 8528257991259836014}
 --- !u!114 &8799196110437737998
 MonoBehaviour:
