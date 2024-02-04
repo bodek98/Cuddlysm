@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1047616388091403038}
   - component: {fileID: 7581129066132014075}
   - component: {fileID: 6265647383163167986}
+  - component: {fileID: 2699487476266360053}
   m_Layer: 0
   m_Name: DeathPlush
   m_TagString: Untagged
@@ -111,3 +112,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2699487476266360053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285586489234936084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5641ec5145033e4d97e9def7c494f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLive: 5

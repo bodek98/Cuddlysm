@@ -25,13 +25,20 @@ public class EnemyEntity : Entity
 
     protected override void DeathAnimation()
     {
-        Debug.Log("Enemy is dead :)");
+        if (deathPrefab)
+        {
+            Vector3 groundLevel = transform.position;
+            groundLevel.y -= 1;
+            Instantiate(deathPrefab, groundLevel, transform.rotation);
+        }
+
+        Destroy(gameObject);
     }
     
     // New functions
     
     private void UpdateHealthBar()
     {
-        _healthBar.fillAmount = _currentHealth / maxHealth ;
+        _healthBar.fillAmount = currentHealth / maxHealth ;
     }
 }

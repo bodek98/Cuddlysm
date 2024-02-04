@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1010a60434d618e458ec483001601f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxHealth: 100
+  currentHealth: 100
+  deathPrefab: {fileID: 5285586489234936084, guid: 0f91ddbba0129ad478c19c31dcb9cca1, type: 3}
   _healthBar: {fileID: 5727230717673450544}
 --- !u!195 &4177758113995258269
 NavMeshAgent:
