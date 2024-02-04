@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private GameObject _weaponHolder;
-    [SerializeField] private float _gunHeight = 1.5f;
 
     void Start()
     {
@@ -29,7 +28,7 @@ public class Movement : MonoBehaviour
         _rb.MovePosition(transform.position + _direction * speed * Time.deltaTime);
 
         Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0,_gunHeight, 0));
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0,transform.position.y, 0));
 
         if (groundPlane.Raycast(cameraRay, out float rayLength))
         {
