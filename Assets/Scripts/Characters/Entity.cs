@@ -10,6 +10,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] public float maxHealth = 100;
     [SerializeField] protected float currentHealth = 100;
     [SerializeField] protected GameObject deathPrefab;
+    [SerializeField] protected bool attacksOnDeath;
     
     public enum DamageDealerType
     {
@@ -33,7 +34,7 @@ public abstract class Entity : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            DeathAnimation();
+            HandleDeath();
         }
 
         HandleAfterDamage();
@@ -48,6 +49,18 @@ public abstract class Entity : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+    }
+
+    private void HandleDeath()
+    {
+        if (attacksOnDeath)
+        {
+            if (gameObject.TryGetComponent<EnemyBaseController>(out EnemyBaseController controller))
+            {
+                controller.weapon?.Attack();
+            }
+        }
+        DeathAnimation();
     }
     
     protected bool DamageCooldown(DamageDealerType damageDealerType)

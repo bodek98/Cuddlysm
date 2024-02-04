@@ -5,17 +5,18 @@ using UnityEngine.AI;
 
 public abstract class EnemyBaseController : MonoBehaviour
 {
+    public Weapon weapon;
+    
     protected FieldOfView fov;
-    protected Weapon weapon;
     protected NavMeshAgent agent;
     private bool _needsToInspectLastPosition;
 
     [SerializeField] private float _followTimeTreshHold = 1;
-    [SerializeField] private float _safeDistanceToPlayer = 5;
     [SerializeField] private float _rotationStep = 5;
     [SerializeField] private float _searchRange = 10;
     [SerializeField] private GameObject _weaponObject;
     [SerializeField] protected GameObject weaponHolder;
+    [SerializeField] protected float safeDistanceToPlayer = 5;
 
     void Start()
     {
@@ -43,7 +44,7 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void HeadToTarget()
     {
-        agent.stoppingDistance = _safeDistanceToPlayer;
+        agent.stoppingDistance = safeDistanceToPlayer;
         agent.SetDestination(fov.currentTarget.transform.position);
 
         if (agent.remainingDistance < agent.stoppingDistance)
