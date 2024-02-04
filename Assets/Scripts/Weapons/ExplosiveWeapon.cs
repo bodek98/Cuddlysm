@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ExplosiveWeapon : Weapon
 {
-    [SerializeField] private float _radius = 5;
-    [SerializeField] private int _damage = 5;
+    [SerializeField] private float _radius = 2;
+    [SerializeField] private int _damage = 20;
     [SerializeField] private Entity.DamageDealerType _damageDealerType;
-    
     [SerializeField] private LayerMask _targetMask;
 
+    private bool _exploded;
 
     public override void Attack()
     {
+        if (_exploded) return;
+        _exploded = true;
+        
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
 
         foreach (Collider rangeCheck in rangeChecks)

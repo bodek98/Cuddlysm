@@ -8,14 +8,16 @@ public abstract class Entity : MonoBehaviour
     private const float _damageCooldownDuration = 1.0f; // in seconds
 
     [SerializeField] public float maxHealth = 100;
-    [SerializeField] protected float _currentHealth = 100;
+    [SerializeField] protected float currentHealth = 100;
+    [SerializeField] protected GameObject deathPrefab;
+    [SerializeField] protected bool attacksOnDeath;
     
     public enum DamageDealerType
     {
         Acid, Bullet, Knife, Explosive
     }
 
-    public float Health => _currentHealth;
+    public float Health => currentHealth;
 
     public float MaxHealth => maxHealth;
     
@@ -26,13 +28,13 @@ public abstract class Entity : MonoBehaviour
 
     public void DamageEntity(float damage, DamageDealerType damageDealerType)
     {
-        if (_currentHealth <= 0 || !CheckIfVulnerable(damageDealerType)) return;
-        _currentHealth -= damage;
+        if (currentHealth <= 0 || !CheckIfVulnerable(damageDealerType)) return;
+        currentHealth -= damage;
             
-        if (_currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            _currentHealth = 0;
-            DeathAnimation();
+            currentHealth = 0;
+            HandleDeath();
         }
 
         HandleAfterDamage();
@@ -40,13 +42,25 @@ public abstract class Entity : MonoBehaviour
 
     public void HealEntity(int heal)
     {
-        if (_currentHealth >= maxHealth) return;
-        _currentHealth += heal;
+        if (currentHealth >= maxHealth) return;
+        currentHealth += heal;
 
-        if (_currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
         {
-            _currentHealth = maxHealth;
+            currentHealth = maxHealth;
         }
+    }
+
+    private void HandleDeath()
+    {
+        if (attacksOnDeath)
+        {
+            if (gameObject.TryGetComponent<EnemyBaseController>(out EnemyBaseController controller))
+            {
+                controller.weapon?.Attack();
+            }
+        }
+        DeathAnimation();
     }
     
     protected bool DamageCooldown(DamageDealerType damageDealerType)
