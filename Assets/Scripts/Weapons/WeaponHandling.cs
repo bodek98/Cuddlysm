@@ -10,9 +10,6 @@ public class WeaponHandling : MonoBehaviour
     [SerializeField] private GameObject _weaponHolder;
 
     private Weapon _weapon;
-    private PlayerInput _playerInput;
-
-    public InputActionReference weaponAttackAction;
 
     // Start is called before the first frame update
     void Start()
@@ -21,44 +18,29 @@ public class WeaponHandling : MonoBehaviour
         SelectWeapon();
     }
 
-    private void OnEnable()
+    public void OnWeaponAttack(InputAction.CallbackContext context)
     {
-        weaponAttackAction.action.Enable();
-        weaponAttackAction.action.performed += OnAttackPressed;
-        weaponAttackAction.action.canceled += OnAttackReleased;
-    }
-
-    private void OnDisable()
-    {
-        weaponAttackAction.action.Disable();
-        weaponAttackAction.action.performed -= OnAttackPressed;
-        weaponAttackAction.action.canceled -= OnAttackReleased;
-    }
-
-    private void OnAttackPressed(InputAction.CallbackContext context)
-    {
-        if (context.ReadValue<float>() > 0.5f)
+        if (context.started)
         {
             _weapon.Attack();
-        }
-    }
-
-    private void OnAttackReleased(InputAction.CallbackContext context)
-    {
-        if (context.ReadValue<float>() < 0.5f)
+        } 
+        else if (context.canceled)
         {
             _weapon.StopAttack();
         }
     }
 
-    void OnWeaponReloading(InputValue value)
+    public void OnWeaponReloading(InputAction.CallbackContext context)
     {
-        StartCoroutine(_weapon.Reload());
+        if (context.started)
+        {
+            StartCoroutine(_weapon.Reload());
+        }
     }
 
-    void OnWeaponScrollSelection(InputValue value)
+    public void OnWeaponScrollSelection(InputAction.CallbackContext context)
     {
-        int scrollDeltaY = (int)value.Get<float>();
+        int scrollDeltaY = (int)context.ReadValue<float>();
 
         switch (scrollDeltaY)
         {
@@ -88,9 +70,9 @@ public class WeaponHandling : MonoBehaviour
         SelectWeapon();
     }
 
-    void OnWeaponNumericalSelection(InputValue value)
+    public void OnWeaponNumericalSelection(InputAction.CallbackContext context)
     {
-        int numericalSelection = (int)value.Get<float>();
+        int numericalSelection = (int)context.ReadValue<float>();
 
         if (numericalSelection >= 1 && numericalSelection <= _weaponHolder.transform.childCount)
         {

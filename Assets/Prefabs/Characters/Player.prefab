@@ -103,7 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   _weaponHolder: {fileID: 3967865668584804766}
-  _gunHeight: 1.5
+  _controllerDeadzone: 0.1
+  _gamepadRotateSmoothing: 1000
 --- !u!114 &5564831419547436372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedWeapon: 0
   _weaponHolder: {fileID: 3967865668584804766}
-  weaponAttackAction: {fileID: -6933786509725638180, guid: 2a1233fdc4680674fa998f9df022ac3a, type: 3}
 --- !u!114 &4296056500995897861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728d103108b89c42a001119b8d97050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxHealth: 100
+  currentHealth: 100
+  deathPrefab: {fileID: 0}
+  attacksOnDeath: 0
 --- !u!114 &6016462651181342649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 2a1233fdc4680674fa998f9df022ac3a, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -157,8 +159,108 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4591195699971887844}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 19008ef3-a4a8-4678-a679-c1f15f76516e
+    m_ActionName: PlayerControlls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4591195699971887844}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c32c0831-567c-4c75-bcf4-a0053ce6e06a
+    m_ActionName: PlayerControlls/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5564831419547436372}
+        m_TargetAssemblyTypeName: WeaponHandling, Assembly-CSharp
+        m_MethodName: OnWeaponScrollSelection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5b4c6924-69a9-4b16-b1bc-e7d279f5faa8
+    m_ActionName: PlayerControlls/WeaponScrollSelection[/Mouse/scroll/y,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5564831419547436372}
+        m_TargetAssemblyTypeName: WeaponHandling, Assembly-CSharp
+        m_MethodName: OnWeaponNumericalSelection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8bdaaf52-ef63-4cb7-a35f-496901fddc06
+    m_ActionName: PlayerControlls/WeaponNumericalSelection[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7,/Keyboard/8,/Keyboard/9,/Keyboard/0]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5564831419547436372}
+        m_TargetAssemblyTypeName: WeaponHandling, Assembly-CSharp
+        m_MethodName: OnWeaponReloading
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c23f7172-4395-4565-b0db-3fde38fc5e02
+    m_ActionName: PlayerControlls/WeaponReloading[/Keyboard/r,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5564831419547436372}
+        m_TargetAssemblyTypeName: WeaponHandling, Assembly-CSharp
+        m_MethodName: OnWeaponAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 30193539-673d-4bd4-bf99-e21a94c047a4
+    m_ActionName: PlayerControlls/WeaponAttack[/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02546ddd-6a7e-4c1e-937e-77cb1cbf5d3c
+    m_ActionName: PlayerControlls/Join[/XInputControllerWindows/start,/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControlls
   m_SplitScreenIndex: -1

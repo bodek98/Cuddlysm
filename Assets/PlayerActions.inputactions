@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Aim",
+                    "type": "PassThrough",
+                    "id": "c32c0831-567c-4c75-bcf4-a0053ce6e06a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "WeaponScrollSelection",
                     "type": "PassThrough",
                     "id": "5b4c6924-69a9-4b16-b1bc-e7d279f5faa8",
@@ -49,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "02546ddd-6a7e-4c1e-937e-77cb1cbf5d3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -69,7 +87,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -80,7 +98,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -91,7 +109,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -102,10 +120,21 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "243e302a-8435-4742-8b4e-b141e6281677",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -113,7 +142,18 @@
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
+                    "action": "WeaponScrollSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3574bbe-40ad-4371-8dc0-b53422eeeac8",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "WeaponScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -124,7 +164,7 @@
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "Scale",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -135,7 +175,7 @@
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "Scale(factor=2)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -146,7 +186,7 @@
                     "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "Scale(factor=3)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -157,7 +197,7 @@
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "Scale(factor=4)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -168,7 +208,7 @@
                     "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "Scale(factor=5)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -179,7 +219,7 @@
                     "path": "<Keyboard>/6",
                     "interactions": "",
                     "processors": "Scale(factor=6)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -190,7 +230,7 @@
                     "path": "<Keyboard>/7",
                     "interactions": "",
                     "processors": "Scale(factor=7)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -201,7 +241,7 @@
                     "path": "<Keyboard>/8",
                     "interactions": "",
                     "processors": "Scale(factor=8)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -212,7 +252,7 @@
                     "path": "<Keyboard>/9",
                     "interactions": "",
                     "processors": "Scale(factor=9)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -223,7 +263,7 @@
                     "path": "<Keyboard>/0",
                     "interactions": "",
                     "processors": "Scale(factor=10)",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -234,7 +274,18 @@
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
+                    "action": "WeaponReloading",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "992db74d-e5ed-48a7-9837-40fe6f012525",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "WeaponReloading",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -245,13 +296,96 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keboard+Mouse",
                     "action": "WeaponAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03177a0e-bbaa-4281-a7d5-8cfa4ccb3302",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "WeaponAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adfd3db1-2d12-4074-aa5d-2d942be8908b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c6ec9a0-4343-48cf-9368-368d184363a2",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keboard+Mouse",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d90cb785-8711-4aad-b517-0670946aedbf",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fa88fd2-550f-4eb5-816a-bbf67241a157",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keboard+Mouse",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Keboard+Mouse",
+            "bindingGroup": "Keboard+Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
