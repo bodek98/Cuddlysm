@@ -40,7 +40,6 @@ public class Movement : MonoBehaviour
             if (Mathf.Abs(_aimInput.x) > _controllerDeadzone || Mathf.Abs(_aimInput.y) > _controllerDeadzone)
             {
                 Vector3 aimDirection = Vector3.right * _aimInput.x + Vector3.forward * _aimInput.y;
-                Debug.Log(aimDirection);
                 if (aimDirection.sqrMagnitude > 0.0f)
                 {
                     Quaternion newRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
