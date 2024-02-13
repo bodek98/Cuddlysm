@@ -63,7 +63,7 @@ public class ProjectileWeapon : Weapon
 
     public override void StopAttack()
     {
-        if (_fireMode == FireMode.FullAuto)
+        if (_fireMode == FireMode.FullAuto && _fullAutoCoroutine != null)
         {
             StopCoroutine(_fullAutoCoroutine);
         }

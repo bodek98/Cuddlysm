@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8623926548937312950}
   - component: {fileID: 8169950407845430579}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Follow Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 2093198276234068210}
   - component: {fileID: 2512586091194541347}
   - component: {fileID: 2345486837008457962}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4087
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
