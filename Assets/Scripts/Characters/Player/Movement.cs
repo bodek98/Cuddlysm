@@ -50,8 +50,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            // Todo: check how to convert screenPoint (left-down corner) to point of player (worldPoint?) and use in ScreenPointToRay.
-            Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray cameraRay = _mainCamera.ScreenPointToRay(_aimInput);
             Plane groundPlane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
 
             if (groundPlane.Raycast(cameraRay, out float rayLength))
