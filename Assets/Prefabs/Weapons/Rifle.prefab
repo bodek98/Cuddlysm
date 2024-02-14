@@ -55,7 +55,7 @@ MonoBehaviour:
   _magazineAmmo: 30
   _magazineCapacity: 30
   _storageAmmo: 300
-  _reloadDuration: 2.5
+  _reloadDuration: 1
 --- !u!1 &4259256211145523424
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public abstract void Attack();
+    
     public abstract void StopAttack();
-    public abstract IEnumerator Reload();
+    
+    public abstract void StartReloading(bool forceReload = false);
 }

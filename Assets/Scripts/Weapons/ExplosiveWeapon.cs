@@ -30,8 +30,8 @@ public class ExplosiveWeapon : Weapon
 
     }
 
-    public override IEnumerator Reload()
+    public override void StartReloading(bool forceReload = false)
     {
-        yield break;
+
     }
 }

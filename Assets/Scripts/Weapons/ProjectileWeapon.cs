@@ -25,6 +25,8 @@ public class ProjectileWeapon : Weapon
     private float _nextTimeToAttack = 0;
 
     private IEnumerator _fullAutoCoroutine;
+    private IEnumerator _reloadingCoroutine;
+    private WeaponGUIUpdater _weaponGUIUpdater;
 
     private enum FireMode
     {
@@ -35,12 +37,32 @@ public class ProjectileWeapon : Weapon
 
     public void Start()
     {
-        _fullAutoCoroutine = FireFullAuto();
+        _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
     }
 
     private void OnEnable()
     {
-        CheckAutoReload();
+        _fullAutoCoroutine = FireFullAuto();
+        _reloadingCoroutine = Reload();
+        
+        HandleGUIUpdate();
+        
+        if (_isReloading)
+        {
+            StartReloading(true);
+        }
+        else
+        {
+            CheckAutoReload();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_reloadingCoroutine != null)
+        {
+            StopCoroutine(_reloadingCoroutine);
+        }
     }
 
     public override void Attack()
@@ -69,11 +91,21 @@ public class ProjectileWeapon : Weapon
         }
     }
 
-    public override IEnumerator Reload()
+    public override void StartReloading(bool forceReload = false)
+    {
+        if (!forceReload && _isReloading) return;
+        
+        _reloadingCoroutine = Reload();
+        StartCoroutine(_reloadingCoroutine);
+    }
+    
+    // Internal functions
+
+    private IEnumerator Reload()
     {
         _isReloading = true;
 
-        yield return new WaitForSeconds(_reloadDuration);
+        yield return StartCoroutine(WaitForReloadAndUpdateGUI(_reloadDuration));
 
         if (transform.GameObject().activeSelf)
         {
@@ -92,6 +124,7 @@ public class ProjectileWeapon : Weapon
         }
 
         _isReloading = false;
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
     }
 
     private IEnumerator FireBurst()
@@ -130,6 +163,8 @@ public class ProjectileWeapon : Weapon
         GameObject newProjectile = Instantiate(_projectile, _muzzle.transform.position, transform.rotation);
         newProjectile.layer = gameObject.layer;
         newProjectile.GetComponent<Rigidbody>().AddForce(_muzzle.transform.forward * _projectileForce, ForceMode.Impulse);
+
+        HandleGUIUpdate();
         CheckAutoReload();
     }
 
@@ -137,7 +172,26 @@ public class ProjectileWeapon : Weapon
     {
         if (_magazineAmmo == 0 && _storageAmmo > 0)
         {
-            StartCoroutine(Reload());
+            StartReloading();
         }
+    }
+
+    private IEnumerator WaitForReloadAndUpdateGUI(float duration)
+    {
+        float timePassed = 0f;
+        float animationFrameDelay = 0.01f;
+
+        while (timePassed < duration)
+        {
+            _weaponGUIUpdater?.FillAmmoBar(timePassed / duration);
+            yield return new WaitForSeconds(animationFrameDelay);
+            timePassed += animationFrameDelay;
+        }
+    }
+
+    private void HandleGUIUpdate()
+    {
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
+        _weaponGUIUpdater?.FillAmmoBar(_magazineAmmo > 0 ? (float)_magazineAmmo / (float)_magazineCapacity : 0);
     }
 }
