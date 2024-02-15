@@ -4,7 +4,11 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public Sprite sprite = null;
+    
     public abstract void Attack();
+    
     public abstract void StopAttack();
-    public abstract IEnumerator Reload();
+    
+    public abstract void StartReloading(bool forceReload = false);
 }

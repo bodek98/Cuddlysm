@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
+    [SerializeField] private PlayerHealthBar _playerHealthBar;
+    
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch
         {
-            DamageDealerType.Bullet => true,
             DamageDealerType.Acid => DamageCooldown(DamageDealerType.Acid),
-            DamageDealerType.Knife => true,
             _ => true
         };
     }
 
     protected override void HandleAfterDamage()
     {
+        UpdateHealthbar();
     }
     
     protected override void DeathAnimation()
@@ -25,4 +26,9 @@ public class PlayerEntity : Entity
     }
 
     // New functions
+    
+    private void UpdateHealthbar()
+    {
+        _playerHealthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
 }

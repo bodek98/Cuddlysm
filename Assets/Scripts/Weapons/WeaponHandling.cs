@@ -34,7 +34,7 @@ public class WeaponHandling : MonoBehaviour
     {
         if (context.started)
         {
-            StartCoroutine(_weapon.Reload());
+            _weapon.StartReloading();
         }
     }
 
