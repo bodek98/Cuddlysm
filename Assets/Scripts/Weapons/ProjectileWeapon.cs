@@ -35,26 +35,19 @@ public class ProjectileWeapon : Weapon
         FullAuto
     }
 
-    public void Start()
+    public void Awake()
     {
         _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
     }
 
+    public void Start()
+    {
+        RefreshWeapon();
+    }
+
     private void OnEnable()
     {
-        _fullAutoCoroutine = FireFullAuto();
-        _reloadingCoroutine = Reload();
-        
-        HandleGUIUpdate();
-        
-        if (_isReloading)
-        {
-            StartReloading(true);
-        }
-        else
-        {
-            CheckAutoReload();
-        }
+        RefreshWeapon();
     }
 
     private void OnDisable()
@@ -100,6 +93,25 @@ public class ProjectileWeapon : Weapon
     }
     
     // Internal functions
+
+    private void RefreshWeapon()
+    {
+        _fullAutoCoroutine = FireFullAuto();
+        _reloadingCoroutine = Reload();
+        
+        HandleGUIUpdate();
+        
+        _weaponGUIUpdater?.SetWeaponSprite(sprite);
+
+        if (_isReloading)
+        {
+            StartReloading(true);
+        }
+        else
+        {
+            CheckAutoReload();
+        }
+    }
 
     private IEnumerator Reload()
     {

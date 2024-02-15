@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public Sprite sprite = null;
+    
     public abstract void Attack();
     
     public abstract void StopAttack();

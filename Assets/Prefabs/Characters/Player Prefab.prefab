@@ -365,7 +365,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1985775869419832093
@@ -1227,6 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3aba7392e2d974f8b7ccc6ffeae09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponSprite: {fileID: 8556813272373944212}
   _ammoBarGUI: {fileID: 1577589744644047096}
   _magazineAmmoGUI: {fileID: 884605471747691534}
   _storageAmmoGUI: {fileID: 3663729052404783753}
