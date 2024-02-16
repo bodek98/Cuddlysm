@@ -11,9 +11,8 @@ public class EnemyEntity : Entity
     {
         return damageDealerType switch
         {
-            DamageDealerType.Bullet => true,
             DamageDealerType.Acid => DamageCooldown(DamageDealerType.Acid),
-            DamageDealerType.Knife => true,
+            DamageDealerType.Flame => DamageCooldown(DamageDealerType.Flame),
             _ => true
         };
     }

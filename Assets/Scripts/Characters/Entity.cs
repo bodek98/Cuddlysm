@@ -14,7 +14,7 @@ public abstract class Entity : MonoBehaviour
     
     public enum DamageDealerType
     {
-        Acid, Bullet, Knife, Explosive
+        Acid, Bullet, Knife, Explosive, Flame
     }
 
     public float Health => currentHealth;
