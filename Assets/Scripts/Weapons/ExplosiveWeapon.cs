@@ -27,11 +27,11 @@ public class ExplosiveWeapon : Weapon
 
     public override void StopAttack()
     {
-
+        throw new System.NotImplementedException();
     }
 
     public override void StartReloading(bool forceReload = false)
     {
-
+        throw new System.NotImplementedException();
     }
 }

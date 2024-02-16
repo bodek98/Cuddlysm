@@ -17,17 +17,17 @@ public class ContactDamage : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
+        if (other.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
         {
             entitiesToDamage.Add(entityComponent);
         }
     }
-    
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
+        if (other.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
         {
             entitiesToDamage.Remove(entityComponent);
         }
