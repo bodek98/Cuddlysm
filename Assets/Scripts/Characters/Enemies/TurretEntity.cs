@@ -11,8 +11,7 @@ public class TurretEntity : EnemyEntity
         return damageDealerType switch
         {
             DamageDealerType.Bullet => true,
-            DamageDealerType.Acid => false,
-            DamageDealerType.Knife => false,
+            DamageDealerType.Explosive => true,
             _ => false
         };
     }
