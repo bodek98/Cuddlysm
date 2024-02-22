@@ -3835,7 +3835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.96
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3843,7 +3843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.23
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 2f760b85581d26b498c63d234873f9b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4218,7 +4218,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -4561,9 +4561,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1228450219}
   - {fileID: 1830338995}
   - {fileID: 373594641}
-  - {fileID: 1228450219}
   - {fileID: 182459955}
   - {fileID: 1769894461}
   m_Father: {fileID: 0}
@@ -4707,7 +4707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.08
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4715,7 +4715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.68
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 8919820924516588848, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4864,7 +4864,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce53734141c70c04aadd2f1b5847e9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 5
+  _damage: 0.25
   _damageDealerType: 0
   entitiesToDamage: []
 --- !u!1660057539 &9223372036854775807

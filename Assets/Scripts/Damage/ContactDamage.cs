@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ContactDamage : MonoBehaviour
 {
-    [SerializeField] private int _damage = 5;
+    [SerializeField] private float _damage = 0.5f;
     [SerializeField] private Entity.DamageDealerType _damageDealerType;
     [SerializeField] private List<Entity> entitiesToDamage;
     
@@ -17,17 +17,17 @@ public class ContactDamage : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
+        if (other.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
         {
             entitiesToDamage.Add(entityComponent);
         }
     }
-    
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
+        if (other.gameObject.TryGetComponent<Entity>(out Entity entityComponent))
         {
             entitiesToDamage.Remove(entityComponent);
         }
