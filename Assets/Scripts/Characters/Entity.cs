@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     private Dictionary<DamageDealerType, float> _damageCooldownDict;
-    private const float _damageCooldownDuration = 1.0f; // in seconds
+    private const float _damageCooldownDuration = .01f; // in seconds
 
     [SerializeField] public float maxHealth = 100;
     [SerializeField] protected float currentHealth = 100;

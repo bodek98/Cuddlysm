@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectileWeapon : Weapon
+public class ProjectileWeapon : ReloadableWeapon
 {
     [SerializeField] private GameObject _projectile;
     [SerializeField] private GameObject _muzzle;
@@ -12,21 +11,9 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private float _burstDelay = 0.05f;
     [SerializeField] private FireMode _fireMode = FireMode.Single;
 
-    [SerializeField] private int _magazineAmmo;
-    [SerializeField] private int _magazineCapacity;
-    [SerializeField] private int _storageAmmo;
-    // to uncomment during ammo picking up functionality development 
-    // [SerializeField] private int _storageAmmoCapacity;
-
-    [SerializeField] private float _reloadDuration = 2.5f;
-    private bool _isReloading = false;
     private bool _isBursting = false;
-
     private float _nextTimeToAttack = 0;
-
     private IEnumerator _fullAutoCoroutine;
-    private IEnumerator _reloadingCoroutine;
-    private WeaponGUIUpdater _weaponGUIUpdater;
 
     private enum FireMode
     {
@@ -35,27 +22,9 @@ public class ProjectileWeapon : Weapon
         FullAuto
     }
 
-    public void Awake()
-    {
-        _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
-    }
-
-    public void Start()
-    {
-        RefreshWeapon();
-    }
-
     private void OnEnable()
     {
         RefreshWeapon();
-    }
-
-    private void OnDisable()
-    {
-        if (_reloadingCoroutine != null)
-        {
-            StopCoroutine(_reloadingCoroutine);
-        }
     }
 
     public override void Attack()
@@ -84,21 +53,12 @@ public class ProjectileWeapon : Weapon
         }
     }
 
-    public override void StartReloading(bool forceReload = false)
-    {
-        if (!forceReload && _isReloading) return;
-        
-        _reloadingCoroutine = Reload();
-        StartCoroutine(_reloadingCoroutine);
-    }
-    
     // Internal functions
 
     private void RefreshWeapon()
     {
         _fullAutoCoroutine = FireFullAuto();
-        _reloadingCoroutine = Reload();
-        
+
         HandleGUIUpdate();
         
         _weaponGUIUpdater?.SetWeaponSprite(sprite);
@@ -111,32 +71,6 @@ public class ProjectileWeapon : Weapon
         {
             CheckAutoReload();
         }
-    }
-
-    private IEnumerator Reload()
-    {
-        _isReloading = true;
-
-        yield return StartCoroutine(WaitForReloadAndUpdateGUI(_reloadDuration));
-
-        if (transform.GameObject().activeSelf)
-        {
-            int missingAmmo = _magazineCapacity - _magazineAmmo;
-
-            if (missingAmmo < _storageAmmo)
-            {
-                _magazineAmmo += missingAmmo;
-                _storageAmmo -= missingAmmo;
-            }
-            else
-            {
-                _magazineAmmo += _storageAmmo;
-                _storageAmmo = 0;
-            }
-        }
-
-        _isReloading = false;
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
     }
 
     private IEnumerator FireBurst()
@@ -153,7 +87,7 @@ public class ProjectileWeapon : Weapon
         _isBursting = false;
         _nextTimeToAttack += _attackDelay;
     }
-    
+
     private IEnumerator FireFullAuto()
     {
         while (true)
@@ -178,32 +112,5 @@ public class ProjectileWeapon : Weapon
 
         HandleGUIUpdate();
         CheckAutoReload();
-    }
-
-    private void CheckAutoReload()
-    {
-        if (_magazineAmmo == 0 && _storageAmmo > 0)
-        {
-            StartReloading();
-        }
-    }
-
-    private IEnumerator WaitForReloadAndUpdateGUI(float duration)
-    {
-        float timePassed = 0f;
-        float animationFrameDelay = 0.01f;
-
-        while (timePassed < duration)
-        {
-            _weaponGUIUpdater?.FillAmmoBar(timePassed / duration);
-            yield return new WaitForSeconds(animationFrameDelay);
-            timePassed += animationFrameDelay;
-        }
-    }
-
-    private void HandleGUIUpdate()
-    {
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
-        _weaponGUIUpdater?.FillAmmoBar(_magazineAmmo > 0 ? (float)_magazineAmmo / (float)_magazineCapacity : 0);
     }
 }

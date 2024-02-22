@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ContactDamage : MonoBehaviour
 {
-    [SerializeField] private int _damage = 5;
+    [SerializeField] private float _damage = 0.5f;
     [SerializeField] private Entity.DamageDealerType _damageDealerType;
     [SerializeField] private List<Entity> entitiesToDamage;
     
