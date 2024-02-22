@@ -55,24 +55,6 @@ public class ProjectileWeapon : ReloadableWeapon
 
     // Internal functions
 
-    private void RefreshWeapon()
-    {
-        _fullAutoCoroutine = FireFullAuto();
-
-        HandleGUIUpdate();
-        
-        _weaponGUIUpdater?.SetWeaponSprite(sprite);
-
-        if (_isReloading)
-        {
-            StartReloading(true);
-        }
-        else
-        {
-            CheckAutoReload();
-        }
-    }
-
     private IEnumerator FireBurst()
     {
         if (Time.time < _nextTimeToAttack || _isBursting) yield break;

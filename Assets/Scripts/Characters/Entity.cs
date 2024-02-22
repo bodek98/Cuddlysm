@@ -11,11 +11,13 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private float damageCooldownDuration = .01f;
     [SerializeField] private float burnDuration = 4f;
     [SerializeField] private float burnDamage = .1f;
+    [SerializeField] protected GameObject fireArson;
     [SerializeField] protected GameObject deathPrefab;
     [SerializeField] protected bool attacksOnDeath;
     protected bool isOnFire = false;
 
     private IEnumerator _burnCoroutine;
+    private ParticleSystem _burningParticles;
     
     public enum DamageDealerType
     {
@@ -29,6 +31,8 @@ public abstract class Entity : MonoBehaviour
     private void Start()
     {
         _damageCooldownDict = new Dictionary<DamageDealerType, float>();
+        _burningParticles = fireArson.GetComponent<ParticleSystem>();
+        _burningParticles.Stop();
     }
 
     public void DamageEntity(float damage, DamageDealerType damageDealerType)
@@ -94,6 +98,7 @@ public abstract class Entity : MonoBehaviour
         if (_burnCoroutine != null)
         {
             StopCoroutine(_burnCoroutine);
+            _burningParticles.Stop();
         }
 
         _burnCoroutine = Burn();
@@ -102,6 +107,8 @@ public abstract class Entity : MonoBehaviour
 
     private IEnumerator Burn()
     {
+        _burningParticles.Play();
+        
         float elapsed = 0f;
         while (elapsed < burnDuration) 
         {
@@ -111,7 +118,7 @@ public abstract class Entity : MonoBehaviour
             yield return new WaitForSeconds(damageCooldownDuration);
         }
         
-        yield break;
+        _burningParticles.Stop();
     }
 
     /* Abstract functions */
