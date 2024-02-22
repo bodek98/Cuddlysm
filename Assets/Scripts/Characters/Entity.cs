@@ -5,16 +5,21 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     private Dictionary<DamageDealerType, float> _damageCooldownDict;
-    private const float _damageCooldownDuration = .01f; // in seconds
 
     [SerializeField] public float maxHealth = 100;
     [SerializeField] protected float currentHealth = 100;
+    [SerializeField] private float damageCooldownDuration = .01f;
+    [SerializeField] private float burnDuration = 4f;
+    [SerializeField] private float burnDamage = .1f;
     [SerializeField] protected GameObject deathPrefab;
     [SerializeField] protected bool attacksOnDeath;
+    protected bool isOnFire = false;
+
+    private IEnumerator _burnCoroutine;
     
     public enum DamageDealerType
     {
-        Acid, Bullet, Knife, Explosive, Flame
+        Acid, Bullet, Explosive, Flame
     }
 
     public float Health => currentHealth;
@@ -29,8 +34,17 @@ public abstract class Entity : MonoBehaviour
     public void DamageEntity(float damage, DamageDealerType damageDealerType)
     {
         if (currentHealth <= 0 || !CheckIfVulnerable(damageDealerType)) return;
+        if (damageDealerType == DamageDealerType.Flame)
+        {
+            SetOnFire();
+        }
+
+        DamageHandling(damage);
+    }
+
+    private void DamageHandling(float damage)
+    {
         currentHealth -= damage;
-            
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -71,8 +85,33 @@ public abstract class Entity : MonoBehaviour
             if (cooldownEnd > Time.time) return false;
         }
         // If it doesn't exist, or it passed
-        _damageCooldownDict[damageDealerType] = Time.time + _damageCooldownDuration;
+        _damageCooldownDict[damageDealerType] = Time.time + damageCooldownDuration;
         return true;
+    }
+
+    private void SetOnFire()
+    {
+        if (_burnCoroutine != null)
+        {
+            StopCoroutine(_burnCoroutine);
+        }
+
+        _burnCoroutine = Burn();
+        StartCoroutine(_burnCoroutine);
+    }
+
+    private IEnumerator Burn()
+    {
+        float elapsed = 0f;
+        while (elapsed < burnDuration) 
+        {
+            // ToDo: Handle game pause
+            elapsed += Time.deltaTime + damageCooldownDuration;
+            DamageHandling(burnDamage);
+            yield return new WaitForSeconds(damageCooldownDuration);
+        }
+        
+        yield break;
     }
 
     /* Abstract functions */

@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0.5
-  _damageDealerType: 4
+  _damageDealerType: 3
   entitiesToDamage: []
 --- !u!1001 &5327067662243380779
 PrefabInstance:

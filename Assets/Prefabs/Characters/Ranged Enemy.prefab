@@ -104,7 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  damageCooldownDuration: 0.01
+  burnDuration: 4
+  burnDamage: 0.1
   deathPrefab: {fileID: 5285586489234936084, guid: 0f91ddbba0129ad478c19c31dcb9cca1, type: 3}
+  attacksOnDeath: 0
   _healthBar: {fileID: 5727230717673450544}
 --- !u!195 &4177758113995258269
 NavMeshAgent:
@@ -164,12 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4da3761a57e66d4c94953aba5ca74c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
   _followTimeTreshHold: 2
-  _safeDistanceToPlayer: 8
   _rotationStep: 10
   _searchRange: 10
   _weaponObject: {fileID: 2151615597088453239}
   weaponHolder: {fileID: 245727520481034446}
+  safeDistanceToPlayer: 5
 --- !u!1 &245727520481034446
 GameObject:
   m_ObjectHideFlags: 0

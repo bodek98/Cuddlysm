@@ -101,7 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  damageCooldownDuration: 0.01
+  burnDuration: 0
+  burnDamage: 0
   deathPrefab: {fileID: 2583469947934557174, guid: 35d82d89575e09747a357ac0ee70cfab, type: 3}
+  attacksOnDeath: 0
   _healthBar: {fileID: 8528257991259836014}
 --- !u!114 &8799196110437737998
 MonoBehaviour:
