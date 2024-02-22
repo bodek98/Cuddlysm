@@ -24,6 +24,7 @@ public class ProjectileWeapon : ReloadableWeapon
 
     private void OnEnable()
     {
+        _fullAutoCoroutine = FireFullAuto();
         RefreshWeapon();
     }
 
