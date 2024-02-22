@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce53734141c70c04aadd2f1b5847e9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 5
+  _damage: 0.25
   _damageDealerType: 0
   entitiesToDamage: []
 --- !u!1660057539 &9223372036854775807
