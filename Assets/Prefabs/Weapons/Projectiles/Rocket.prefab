@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 25
-  _damageDealerType: 1
+  _damageDealerType: 2
   _lifespan: 30
 --- !u!1001 &2858420832282029680
 PrefabInstance:

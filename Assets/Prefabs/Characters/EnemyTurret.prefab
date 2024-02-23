@@ -124,7 +124,7 @@ MonoBehaviour:
   _targetTag: Player
   _head: {fileID: 1845790563683109251}
   _weapon: {fileID: 4462619766066732139}
-  _rotationSpeed: 1
+  _rotationSpeed: 180
 --- !u!136 &8803861365070439061
 CapsuleCollider:
   m_ObjectHideFlags: 0
