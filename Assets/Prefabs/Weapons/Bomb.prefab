@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46403207569a0242881179c54598a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   _radius: 5
   _damage: 50
-  _damageDealerType: 3
+  _damageDealerType: 2
   _targetMask:
     serializedVersion: 2
     m_Bits: 64
