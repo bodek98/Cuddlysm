@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,6 @@ public class TurretControl : MonoBehaviour
     [SerializeField] private GameObject _head;
     [SerializeField] private GameObject _weapon;
     [SerializeField] private float _rotationSpeed = 1.0f;
-
 
     void Start()
     {
@@ -34,20 +34,23 @@ public class TurretControl : MonoBehaviour
 
     private void TurretStep()
     {
-            float singleStep = _rotationSpeed * Time.deltaTime;
+            float singleStepDeg = _rotationSpeed * Time.deltaTime;
+            float singleStepRad = singleStepDeg * Mathf.Deg2Rad;
 
-            Vector3 targetHeadPosition = _currentTarget.transform.position ;
+            Vector3 targetHeadPosition = _currentTarget.transform.position;
+
+            // Head rotation (only yaw)
             Vector3 aimTurretDirection = targetHeadPosition - _head.transform.position;
-            Vector3 aimWeaponDirection = targetHeadPosition - _weapon.transform.position;
-
-            Vector3 newTurretDirection = Vector3.RotateTowards(_head.transform.forward, aimTurretDirection, singleStep, 0.0f);
-            Vector3 newWeaponDirection = Vector3.RotateTowards(_weapon.transform.forward, aimWeaponDirection, singleStep, 0.0f);
-
+            Vector3 newTurretDirection = Vector3.RotateTowards(_head.transform.forward, aimTurretDirection, singleStepRad, 0.0f);
             _head.transform.rotation = Quaternion.LookRotation(new Vector3(newTurretDirection.x, 0, newTurretDirection.z));
-            _weapon.transform.rotation = Quaternion.LookRotation(newWeaponDirection);
 
-            float targetTurretAngle = Vector3.Angle(aimWeaponDirection, newWeaponDirection);
-            if (targetTurretAngle < 5.0f)
+            // Weapon rotation (only pitch)
+            Vector3 aimWeaponDirection = targetHeadPosition - _weapon.transform.position;
+            float angleWeaponTarget = Vector3.SignedAngle(_weapon.transform.forward, aimWeaponDirection, _weapon.transform.right);
+            float weaponPitchAdjustment = Mathf.Clamp(angleWeaponTarget, -singleStepDeg, singleStepDeg);
+            _weapon.transform.Rotate(Vector3.right, weaponPitchAdjustment, Space.Self);
+
+            if (Mathf.Abs(angleWeaponTarget) < 5.0f)
             {
                 _projectileWeapon.Attack();
             }
