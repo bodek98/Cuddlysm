@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
+  playerEntity: {fileID: 0}
+  _playerStaminaBar: {fileID: 0}
   _building: {fileID: 192935011666788634, guid: 0d0a345ef0048b1488757854a1ee4296, type: 3}
   _buildDelay: 1
+  _buildCost: 50
 --- !u!1001 &8842308051729384984
 PrefabInstance:
   m_ObjectHideFlags: 0

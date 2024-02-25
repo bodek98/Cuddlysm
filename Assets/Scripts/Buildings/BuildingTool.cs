@@ -6,5 +6,13 @@ public abstract class BuildingTool : MonoBehaviour
 {
     public Sprite sprite = null;
 
+    [SerializeField] protected PlayerEntity playerEntity; 
+    [SerializeField] private PlayerStaminaBar _playerStaminaBar;
+
+    protected void UpdateStaminabar()
+    {
+        _playerStaminaBar.UpdateStaminaBar(playerEntity.currentStamina, playerEntity.maxStamina);
+    }
+
     public abstract void UseTool();
 }

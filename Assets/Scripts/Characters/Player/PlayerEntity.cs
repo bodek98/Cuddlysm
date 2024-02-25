@@ -40,6 +40,7 @@ public class PlayerEntity : Entity
     {
         _playerHealthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
+
     
     public void Start()
     {

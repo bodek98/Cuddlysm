@@ -8,8 +8,8 @@ public abstract class Entity : MonoBehaviour
 
     [SerializeField] public float maxHealth = 100;
     [SerializeField] protected float currentHealth = 100;
-    [SerializeField] public float maxEnergy = 100;
-    [SerializeField] protected float currentEnergy = 100;
+    [SerializeField] public float maxStamina = 100;
+    [SerializeField] public float currentStamina = 100;
 
     [SerializeField] private float damageCooldownDuration = .01f;
     [SerializeField] private float burnDuration = 4f;
