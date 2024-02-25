@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WeaponScrollSelection",
+                    "name": "ItemScrollSelection",
                     "type": "PassThrough",
                     "id": "5b4c6924-69a9-4b16-b1bc-e7d279f5faa8",
                     "expectedControlType": "",
@@ -33,7 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "WeaponNumericalSelection",
+                    "name": "ItemNumericalSelection",
                     "type": "Button",
                     "id": "8bdaaf52-ef63-4cb7-a35f-496901fddc06",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WeaponAttack",
+                    "name": "ItemAction",
                     "type": "Button",
                     "id": "30193539-673d-4bd4-bf99-e21a94c047a4",
                     "expectedControlType": "Button",
@@ -161,7 +161,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponScrollSelection",
+                    "action": "ItemScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -172,7 +172,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "WeaponScrollSelection",
+                    "action": "ItemScrollSelection",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -183,7 +183,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "WeaponScrollSelection",
+                    "action": "ItemScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -193,8 +193,8 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "WeaponScrollSelection",
+                    "groups": "Gamepad",
+                    "action": "ItemScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -205,7 +205,7 @@
                     "interactions": "",
                     "processors": "Scale",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,7 +216,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=2)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +227,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=3)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -238,7 +238,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=4)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -249,7 +249,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=5)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +260,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=6)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -271,7 +271,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=7)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +282,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=8)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -293,7 +293,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=9)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -304,7 +304,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=10)",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponNumericalSelection",
+                    "action": "ItemNumericalSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -337,7 +337,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keboard+Mouse",
-                    "action": "WeaponAttack",
+                    "action": "ItemAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -348,7 +348,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "WeaponAttack",
+                    "action": "ItemAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -59,7 +59,7 @@ public class ItemHandling : MonoBehaviour
         _movement.itemHolder = _itemHolder;
     }
 
-    public void OnWeaponAttack(InputAction.CallbackContext context)
+    public void OnItemAction(InputAction.CallbackContext context)
     {
         if (_gameMode == GameMode.Combat)
         {
@@ -94,7 +94,7 @@ public class ItemHandling : MonoBehaviour
         
     }
 
-    public void OnWeaponScrollSelection(InputAction.CallbackContext context)
+    public void OnItemScrollSelection(InputAction.CallbackContext context)
     {
         int scrollDeltaY = (int)context.ReadValue<float>();
 
@@ -126,7 +126,7 @@ public class ItemHandling : MonoBehaviour
         SelectItem();
     }
 
-    public void OnWeaponNumericalSelection(InputAction.CallbackContext context)
+    public void OnItemNumericalSelection(InputAction.CallbackContext context)
     {
         int numericalSelection = (int)context.ReadValue<float>();
 
