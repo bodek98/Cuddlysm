@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  maxEnergy: 100
+  currentEnergy: 100
   damageCooldownDuration: 0.01
   burnDuration: 4
   burnDamage: 0.1
@@ -124,7 +126,7 @@ MonoBehaviour:
   _targetTag: Enemy
   _head: {fileID: 4161996870035709814}
   _weapon: {fileID: 5751553987888782704}
-  _rotationSpeed: 10
+  _rotationSpeed: 100
 --- !u!136 &5935712878814029959
 CapsuleCollider:
   m_ObjectHideFlags: 0

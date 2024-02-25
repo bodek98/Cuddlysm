@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public GameObject itemHolder;
+    public Vector3 aimDirection;
+
     private Vector3 _moveDirection;
     private Vector2 _aimInput;
     private Rigidbody _rb;
@@ -39,7 +41,7 @@ public class Movement : MonoBehaviour
         {
             if (Mathf.Abs(_aimInput.x) > _controllerDeadzone || Mathf.Abs(_aimInput.y) > _controllerDeadzone)
             {
-                Vector3 aimDirection = Vector3.right * _aimInput.x + Vector3.forward * _aimInput.y;
+                aimDirection = Vector3.right * _aimInput.x + Vector3.forward * _aimInput.y;
                 if (aimDirection.sqrMagnitude > 0.0f)
                 {
                     Quaternion newRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
@@ -54,10 +56,10 @@ public class Movement : MonoBehaviour
 
             if (groundPlane.Raycast(cameraRay, out float rayLength))
             {
-                Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+                aimDirection = cameraRay.GetPoint(rayLength);
 
-                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-                itemHolder.transform.LookAt(new Vector3(pointToLook.x, itemHolder.transform.position.y, pointToLook.z));
+                transform.LookAt(new Vector3(aimDirection.x, transform.position.y, aimDirection.z));
+                itemHolder.transform.LookAt(new Vector3(aimDirection.x, itemHolder.transform.position.y, aimDirection.z));
             }
         }
     }

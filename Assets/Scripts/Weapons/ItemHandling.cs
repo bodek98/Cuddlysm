@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class ItemHandling : MonoBehaviour
 {
     [SerializeField] private GameMode _gameMode = GameMode.Combat;
-
     [SerializeField] private int _selectedItem = 0;
     [SerializeField] private GameObject _weaponHolder;
     [SerializeField] private GameObject _buildingHolder;
@@ -14,12 +13,14 @@ public class ItemHandling : MonoBehaviour
     private Movement _movement;
     private GameObject _itemHolder;
     private Weapon _weapon;
+    private BuildingTool _buildingTool;
 
     // Start is called before the first frame update
     void Start()
     {
         _itemHolder = _weaponHolder;
         _weapon = GetComponent<Weapon>();
+        _buildingTool = GetComponent<BuildingTool>();
         _movement = GetComponent<Movement>();
 
         SelectItem();
@@ -57,6 +58,8 @@ public class ItemHandling : MonoBehaviour
         }
 
         _movement.itemHolder = _itemHolder;
+        _selectedItem = 0; // Not sure it's good idea to reset here.
+        SelectItem();
     }
 
     public void OnItemAction(InputAction.CallbackContext context)
@@ -74,7 +77,10 @@ public class ItemHandling : MonoBehaviour
         }
         else
         {
-            Debug.Log("Build mode!");
+            if (context.started)
+            {
+                _buildingTool.UseTool();
+            }
         }
     }
 
@@ -89,7 +95,7 @@ public class ItemHandling : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cannot reload while build mode!");
+            return;
         }
         
     }
@@ -147,7 +153,14 @@ public class ItemHandling : MonoBehaviour
             if (i == _selectedItem)
             {
                 item.gameObject.SetActive(true);
-                if (_gameMode == GameMode.Combat) _weapon = item.GetComponent<Weapon>();
+                if (_gameMode == GameMode.Combat)
+                {
+                    _weapon = item.GetComponent<Weapon>();
+                }
+                else
+                {
+                    _buildingTool = item.GetComponent<BuildingTool>();
+                }
             }
             else
             {
