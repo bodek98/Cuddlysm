@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    public GameObject itemHolder;
     private Vector3 _moveDirection;
     private Vector2 _aimInput;
     private Rigidbody _rb;
@@ -13,7 +14,6 @@ public class Movement : MonoBehaviour
     private Camera _mainCamera;
 
     [SerializeField] private float speed = 5.0f;
-    [SerializeField] private GameObject _weaponHolder;
     [SerializeField] private float _controllerDeadzone = 0.1f;
     [SerializeField] private float _gamepadRotateSmoothing = 1000f;
 
@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
                 Vector3 pointToLook = cameraRay.GetPoint(rayLength);
 
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-                _weaponHolder.transform.LookAt(new Vector3(pointToLook.x, _weaponHolder.transform.position.y, pointToLook.z));
+                itemHolder.transform.LookAt(new Vector3(pointToLook.x, itemHolder.transform.position.y, pointToLook.z));
             }
         }
     }
