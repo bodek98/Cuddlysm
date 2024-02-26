@@ -12,12 +12,13 @@ public class Flamethrower : ReloadableWeapon
     
     private void OnEnable()
     {
+        flame.SetActive(false);
+        _flameFire = FireFlame();
         RefreshWeapon();
     }
 
     public override void Attack()
     {
-        _flameFire = FireFlame();
         StartCoroutine(_flameFire);
     }
 
