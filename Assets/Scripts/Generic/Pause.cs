@@ -5,11 +5,18 @@ using UnityEngine.InputSystem;
 
 public class Pause : MonoBehaviour
 {
+    private GameManager _gameManager;
+    
+    public void Start()
+    {
+        _gameManager = GameManager.Instance;
+    }
+    
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("Pause");
+            _gameManager.PauseOrUnpause();
         } 
     }
 }
