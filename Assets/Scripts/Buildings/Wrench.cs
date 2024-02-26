@@ -21,7 +21,7 @@ public class Wrench : BuildingTool
     public override void UseTool()
     {
         Build();
-        UpdateStaminabar();
+        UpdateStaminaBar();
     }
 
     private void Build(bool ignoreBuildDelay = false)

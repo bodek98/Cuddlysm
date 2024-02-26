@@ -9,7 +9,7 @@ public abstract class BuildingTool : MonoBehaviour
     [SerializeField] protected PlayerEntity playerEntity; 
     [SerializeField] private PlayerStaminaBar _playerStaminaBar;
 
-    protected void UpdateStaminabar()
+    protected void UpdateStaminaBar()
     {
         _playerStaminaBar.UpdateStaminaBar(playerEntity.currentStamina, playerEntity.maxStamina);
     }

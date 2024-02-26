@@ -18,7 +18,7 @@ public class PlayerEntity : Entity
 
     protected override void HandleAfterDamage()
     {
-        UpdateHealthbar();
+        UpdateHealthBar();
     }
     
     protected override void DeathAnimation()
@@ -36,7 +36,7 @@ public class PlayerEntity : Entity
 
     // New functions
     
-    private void UpdateHealthbar()
+    private void UpdateHealthBar()
     {
         _playerHealthBar.UpdateHealthBar(currentHealth, maxHealth);
     }

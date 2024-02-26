@@ -14,6 +14,8 @@ public class ItemHandling : MonoBehaviour
     private GameObject _itemHolder;
     private Weapon _weapon;
     private BuildingTool _buildingTool;
+    private int _lastWeaponItem;
+    private int _lastBuildingToolItem;
 
     // Start is called before the first frame update
     void Start()
@@ -36,29 +38,26 @@ public class ItemHandling : MonoBehaviour
         switch (_gameMode)
         {
             case GameMode.Combat:
-                {
-                    _gameMode = GameMode.Build;
-                    _weaponHolder.SetActive(false);
-                    _buildingHolder.SetActive(true);
-                    _itemHolder = _buildingHolder;
-                    _weapon.StopAttack();
+                _gameMode = GameMode.Build;
+                _weaponHolder.SetActive(false);
+                _buildingHolder.SetActive(true);
+                _itemHolder = _buildingHolder;
+                _weapon.StopAttack();
+                _selectedItem = _lastBuildingToolItem;
 
-                    break;
-                }
+                break;
 
             case GameMode.Build:
-                {
-                    _gameMode = GameMode.Combat;
-                    _buildingHolder.SetActive(false);
-                    _weaponHolder.SetActive(true);
-                    _itemHolder = _weaponHolder;
+                _gameMode = GameMode.Combat;
+                _buildingHolder.SetActive(false);
+                _weaponHolder.SetActive(true);
+                _itemHolder = _weaponHolder;
+                _selectedItem = _lastWeaponItem;
 
-                    break;
-                }
+                break;
         }
 
         _movement.itemHolder = _itemHolder;
-        _selectedItem = 0; // Not sure it's good idea to reset here.
         SelectItem();
     }
 
@@ -96,8 +95,7 @@ public class ItemHandling : MonoBehaviour
         else
         {
             return;
-        }
-        
+        }   
     }
 
     public void OnItemScrollSelection(InputAction.CallbackContext context)
@@ -129,6 +127,7 @@ public class ItemHandling : MonoBehaviour
         }
 
         if (_gameMode == GameMode.Combat) _weapon.StopAttack();
+        SetLastItem();
         SelectItem();
     }
 
@@ -141,6 +140,7 @@ public class ItemHandling : MonoBehaviour
             _selectedItem = numericalSelection - 1;
 
             if (_gameMode == GameMode.Combat) _weapon.StopAttack();
+            SetLastItem();
             SelectItem();
         } 
     }
@@ -167,6 +167,18 @@ public class ItemHandling : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
             i++;
+        }
+    }
+
+    private void SetLastItem()
+    {
+        if (_gameMode == GameMode.Combat)
+        {
+            _lastWeaponItem = _selectedItem;
+        }
+        else
+        {
+            _lastBuildingToolItem = _selectedItem;
         }
     }
 }
