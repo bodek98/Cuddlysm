@@ -282,7 +282,7 @@
                 {
                     "name": "",
                     "id": "992db74d-e5ed-48a7-9837-40fe6f012525",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -305,7 +305,7 @@
                     "name": "",
                     "id": "03177a0e-bbaa-4281-a7d5-8cfa4ccb3302",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "WeaponAttack",
