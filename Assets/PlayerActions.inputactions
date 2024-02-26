@@ -148,15 +148,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "d3574bbe-40ad-4371-8dc0-b53422eeeac8",
+                    "name": "1D Axis",
+                    "id": "cb9b4eb7-fda8-4f82-ba5d-63bf28219e56",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponScrollSelection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "4acadbab-9ace-43c2-8731-254e8f667347",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponScrollSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0a7695d3-9544-4370-8dc6-361064e53d6c",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "WeaponScrollSelection",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
