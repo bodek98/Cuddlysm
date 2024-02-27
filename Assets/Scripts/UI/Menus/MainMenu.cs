@@ -17,9 +17,9 @@ public class MainMenu : MonoBehaviour
         _gameManager.ChangeScene(1);
     }
 
-    public void OnSettingsButton()
+    public void OnCreditsButton()
     {
-        Debug.Log("TODO: Settings");
+        Debug.Log("TODO: Credits");
     }
 
     public void OnQuitButton()
