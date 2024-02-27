@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerEntity : Entity
 {
     [SerializeField] private PlayerHealthBar _playerHealthBar;
-    
+    private GameManager _gameManager;
+
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
     {
         return damageDealerType switch
@@ -22,7 +23,15 @@ public class PlayerEntity : Entity
     
     protected override void DeathAnimation()
     {
-        Debug.Log("Player is dead :(");
+        if (deathPrefab)
+        {
+            Vector3 groundLevel = transform.position;
+            groundLevel.y -= 1;
+            Instantiate(deathPrefab, groundLevel, transform.rotation);
+        }
+        _gameManager.HandlePlayerDestroy(transform.parent.gameObject);
+        Destroy(transform.parent.gameObject, _gameManager.playerDeathDuration);
+        Destroy(gameObject);
     }
 
     // New functions
@@ -30,5 +39,11 @@ public class PlayerEntity : Entity
     private void UpdateHealthbar()
     {
         _playerHealthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+    
+    public void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _gameManager.HandlePlayerAddition(transform.parent.gameObject);
     }
 }

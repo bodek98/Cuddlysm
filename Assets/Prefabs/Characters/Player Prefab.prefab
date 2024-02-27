@@ -1380,6 +1380,7 @@ GameObject:
   - component: {fileID: 7702480567069724037}
   - component: {fileID: 7984083677299893604}
   - component: {fileID: 2035729652707406548}
+  - component: {fileID: 2707964409259692858}
   - component: {fileID: 145479699140044857}
   m_Layer: 6
   m_Name: Player
@@ -1507,6 +1508,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedWeapon: 0
   _weaponHolder: {fileID: 7379901334916654622}
+--- !u!114 &2707964409259692858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715838398294003585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa8ef8d8c40c0544860de8dd0da9ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &145479699140044857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,6 +1645,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 02546ddd-6a7e-4c1e-937e-77cb1cbf5d3c
     m_ActionName: PlayerControlls/Join[/XInputControllerWindows/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2707964409259692858}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a8dbf7d-8507-4050-a55f-eaff532ef189
+    m_ActionName: PlayerControlls/Pause[/Keyboard/escape,/DualSenseGamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControlls
@@ -1769,7 +1798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2583469947934557174, guid: 04957bbf2b3c09e46a49b985dd088b71, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

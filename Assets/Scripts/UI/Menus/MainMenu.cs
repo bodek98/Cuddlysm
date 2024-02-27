@@ -5,14 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnPlayButton()
+    private GameManager _gameManager;
+
+    public void Start()
     {
-        SceneManager.LoadScene(1);
+        _gameManager = GameManager.Instance;
     }
 
-    public void OnSettingsButton()
+    public void OnPlayButton()
     {
-        Debug.Log("TODO: Settings");
+        _gameManager.ChangeScene(1);
+    }
+
+    public void OnCreditsButton()
+    {
+        Debug.Log("TODO: Credits");
     }
 
     public void OnQuitButton()
