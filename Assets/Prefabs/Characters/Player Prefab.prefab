@@ -1363,7 +1363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8902018922122304368
 Transform:
   m_ObjectHideFlags: 0
@@ -1497,14 +1497,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 50342158533394548}
-  - component: {fileID: 8522737649126435337}
+  - component: {fileID: 7552128045802990183}
   m_Layer: 0
   m_Name: BuildingHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &50342158533394548
 Transform:
   m_ObjectHideFlags: 0
@@ -1521,7 +1521,7 @@ Transform:
   - {fileID: 8151519222786541589}
   m_Father: {fileID: 4113506646496817746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8522737649126435337
+--- !u!114 &7552128045802990183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1533,10 +1533,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3aba7392e2d974f8b7ccc6ffeae09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponSprite: {fileID: 0}
-  _ammoBarGUI: {fileID: 0}
-  _magazineAmmoGUI: {fileID: 0}
-  _storageAmmoGUI: {fileID: 0}
+  _weaponSprite: {fileID: 8556813272373944212}
+  _ammoBarGUI: {fileID: 1577589744644047096}
+  _magazineAmmoGUI: {fileID: 884605471747691534}
+  _storageAmmoGUI: {fileID: 3663729052404783753}
 --- !u!1 &8649654771133857884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1711,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemHolder: {fileID: 7379901334916654622}
   aimDirection: {x: 0, y: 0, z: 0}
-  speed: 5
+  targetPosition: {x: 0, y: 0, z: 0}
+  _buildRange: 5
+  _speed: 5
   _controllerDeadzone: 0.1
   _gamepadRotateSmoothing: 320
 --- !u!114 &2035729652707406548
@@ -1726,7 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5f49d75fdcb334a8d0da429b4ff5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMode: 0
+  _gameMode: 1
   _selectedItem: 0
   _weaponHolder: {fileID: 7379901334916654622}
   _buildingHolder: {fileID: 8283377240638612138}
@@ -2206,7 +2208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1676635122060752464, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2249,6 +2251,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5297706579178102741, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
+      propertyPath: _movement
+      value: 
+      objectReference: {fileID: 7984083677299893604}
+    - target: {fileID: 5297706579178102741, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
       propertyPath: playerEntity
       value: 
       objectReference: {fileID: 7702480567069724037}
@@ -2260,6 +2266,10 @@ PrefabInstance:
       propertyPath: _playerStaminaBar
       value: 
       objectReference: {fileID: 2334999164172028341}
+    - target: {fileID: 7162849148495247084, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

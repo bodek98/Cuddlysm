@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Wrench : BuildingTool
 {
+
+    [SerializeField] private Movement _movement;
+    [SerializeField] private GameObject _previewBuilding;
     [SerializeField] private GameObject _building;
     [SerializeField] private float _buildDelay = 0.1f;
     [SerializeField] private float _buildCost = 50f;
 
     private float _nextTimeToBuild = 0;
-    private WeaponGUIUpdater _weaponGUIUpdater;
-    private Movement _movement;
 
-    public void Awake()
+
+    private void OnEnable()
     {
-        _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
-        _movement = _weaponGUIUpdater.GetComponentInParent<Movement>();
+        _weaponGUIUpdater.SetWeaponSprite(sprite);
+    }
+
+    private void Update()
+    {
+        if (!_previewBuilding.activeSelf) _previewBuilding.SetActive(true);
+        _previewBuilding.transform.position = _movement.targetPosition;
     }
 
     public override void UseTool()
@@ -32,9 +39,8 @@ public class Wrench : BuildingTool
 
         playerEntity.currentStamina -= _buildCost;
 
-        GameObject newBuilding = Instantiate(_building, _movement.aimDirection, transform.rotation);
+        GameObject newBuilding = Instantiate(_building, _movement.targetPosition, transform.rotation);
         newBuilding.layer = gameObject.layer;
 
-        /*HandleGUIUpdate();*/
     }
 }

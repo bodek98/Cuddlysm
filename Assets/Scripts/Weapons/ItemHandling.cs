@@ -14,15 +14,12 @@ public class ItemHandling : MonoBehaviour
     private GameObject _itemHolder;
     private Weapon _weapon;
     private BuildingTool _buildingTool;
-    private int _lastWeaponItem;
-    private int _lastBuildingToolItem;
+    private int _lastWeaponItem = 0;
+    private int _lastBuildingToolItem = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _itemHolder = _weaponHolder;
-        _weapon = GetComponent<Weapon>();
-        _buildingTool = GetComponent<BuildingTool>();
+        _itemHolder = _buildingHolder;
         _movement = GetComponent<Movement>();
 
         SelectItem();

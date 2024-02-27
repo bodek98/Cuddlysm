@@ -18,13 +18,6 @@ public abstract class ReloadableWeapon : Weapon
     public void Awake()
     {
         _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
-        HandleCustomAwake();
-    }
-
-    // Can but don't have to be override to handle Awake in children
-    void HandleCustomAwake()
-    {
-        
     }
     
     private void OnDisable()
@@ -87,7 +80,7 @@ public abstract class ReloadableWeapon : Weapon
     protected void RefreshWeapon()
     {
         HandleGUIUpdate();
-        
+
         _weaponGUIUpdater?.SetWeaponSprite(sprite);
 
         if (_isReloading)
