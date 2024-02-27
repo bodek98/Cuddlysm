@@ -86,6 +86,7 @@ public class GameManager : Singleton<GameManager>
 
     private void ClearInGameDependencies()
     {
+        _playersList.Clear();
         _mainGameCanvas = null;
         _playerManager = null;
     }
