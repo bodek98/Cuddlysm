@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BuildingTool : MonoBehaviour
 {
+    public bool readyToBuild = true; 
     public Sprite sprite = null;
     [SerializeField] protected PlayerEntity playerEntity; 
     [SerializeField] private PlayerStaminaBar _playerStaminaBar;
@@ -21,4 +22,16 @@ public abstract class BuildingTool : MonoBehaviour
     }
 
     public abstract void UseTool();
+
+    public void OnBuildingTriggerEnter()
+    {
+        Debug.Log("false");
+        readyToBuild = false;
+    }
+
+    public void OnBuildingTriggerExit()
+    {
+        Debug.Log("true");
+        readyToBuild = true;
+    }
 }

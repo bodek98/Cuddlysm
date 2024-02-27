@@ -622,7 +622,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 34807
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1518,7 +1518,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8151519222786541589}
+  - {fileID: 9139802137851180039}
   m_Father: {fileID: 4113506646496817746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7552128045802990183
@@ -2194,7 +2194,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3299165521919591047, guid: a59fd4d9d1a5de3448f9ec83ffc8f3e0, type: 3}
   m_PrefabInstance: {fileID: 5663567917597597072}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6694880141783206546
+--- !u!1001 &5989756792748537472
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2206,9 +2206,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wrench
       objectReference: {fileID: 0}
-    - target: {fileID: 1676635122060752464, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 3118699001561691403, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 32768
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2259,26 +2259,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7702480567069724037}
     - target: {fileID: 5297706579178102741, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
-      propertyPath: _playerEntity
-      value: 
-      objectReference: {fileID: 7702480567069724037}
-    - target: {fileID: 5297706579178102741, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
       propertyPath: _playerStaminaBar
       value: 
       objectReference: {fileID: 2334999164172028341}
-    - target: {fileID: 7162849148495247084, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
---- !u!4 &8151519222786541589 stripped
+--- !u!4 &9139802137851180039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3299165521919591047, guid: 19976453ce0eac8429a83cc7a480c2b9, type: 3}
-  m_PrefabInstance: {fileID: 6694880141783206546}
+  m_PrefabInstance: {fileID: 5989756792748537472}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6697344419636603139
 PrefabInstance:
