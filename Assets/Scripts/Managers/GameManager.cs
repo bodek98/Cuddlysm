@@ -116,6 +116,8 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
+        PauseGame();
+        _mainGameCanvas?.SetDeathMenuActive(true);
         _playerManager.temporaryCamera.SetActive(true);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class InGameMenu : MonoBehaviour
 {
     private GameManager _gameManager;
 
@@ -15,6 +15,13 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         _gameManager.UnpauseGame();
+    }
+    
+    public void RestartGame()
+    {
+        _gameManager.ChangeScene(1);
+        _gameManager.UnpauseGame();
+        gameObject.SetActive(false);
     }
 
     public void ExitToMainMenu()
