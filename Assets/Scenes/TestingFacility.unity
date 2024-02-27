@@ -3869,7 +3869,7 @@ GameObject:
   - component: {fileID: 972439550}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: PlayerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3946,7 +3946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab49553803ab87349b933c3e2fb3a41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _temporaryCamera: {fileID: 1159362182}
+  temporaryCamera: {fileID: 1159362182}
   _playerLayers:
   - serializedVersion: 2
     m_Bits: 2048

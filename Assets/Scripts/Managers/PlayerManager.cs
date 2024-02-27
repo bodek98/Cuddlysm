@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _temporaryCamera;
+    public GameObject temporaryCamera;
     [SerializeField] private List<LayerMask> _playerLayers;
 
     private List<PlayerInput> _players = new List<PlayerInput>();
@@ -42,6 +42,6 @@ public class PlayerManager : MonoBehaviour
 
         // Todo: cinemachine input handler
 
-        _temporaryCamera.SetActive(false);
+        temporaryCamera.SetActive(false);
     }
 }

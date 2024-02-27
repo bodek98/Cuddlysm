@@ -27,8 +27,9 @@ public abstract class EnemyBaseController : MonoBehaviour
 
     void Update()
     {
-        if ((fov.currentTarget && fov.isTargetVisible) || WasTargetRecentlySeen())
+        if (fov.isTargetVisible || WasTargetRecentlySeen())
         {
+            if (fov.currentTarget == null) return;
             HeadToTarget();
             AttackTarget();
         }

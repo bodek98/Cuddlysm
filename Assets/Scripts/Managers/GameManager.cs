@@ -8,10 +8,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public bool isGamePaused = false;
+    public float playerDeathDuration = 2f;
 
     private int _currentSceneId = 0;
     private MainGameCanvas _mainGameCanvas;
-    
+    private PlayerManager _playerManager;
+    private HashSet<GameObject> _playersList = new HashSet<GameObject>();
+
     private new void Awake()
     {
         base.Awake();
@@ -75,6 +78,8 @@ public class GameManager : Singleton<GameManager>
             case 1:
                 GameObject mainCanvas = LocateObject("MainGameCanvas");
                 _mainGameCanvas = mainCanvas?.GetComponent<MainGameCanvas>();
+                GameObject playerManager = LocateObject("PlayerManager");
+                _playerManager = playerManager?.GetComponent<PlayerManager>();
                 break;
         }
     }
@@ -82,6 +87,7 @@ public class GameManager : Singleton<GameManager>
     private void ClearInGameDependencies()
     {
         _mainGameCanvas = null;
+        _playerManager = null;
     }
     
     GameObject LocateObject(string name)
@@ -92,5 +98,24 @@ public class GameManager : Singleton<GameManager>
             Debug.LogError("Unable to locate " + name);
         }
         return go;
+    }
+
+    public void HandlePlayerAddition(GameObject playerObject)
+    {
+        _playersList.Add(playerObject);
+    }
+    
+    public void HandlePlayerDestroy(GameObject playerObject)
+    {
+        _playersList.Remove(playerObject);
+        if (_playersList.Count <= 0)
+        {
+            Invoke(nameof(GameOver), playerDeathDuration);
+        }
+    }
+
+    public void GameOver()
+    {
+        _playerManager.temporaryCamera.SetActive(true);
     }
 }
