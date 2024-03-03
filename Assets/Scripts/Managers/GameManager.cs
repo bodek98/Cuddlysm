@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Loading");
         LoadInGameDependencies(scene.buildIndex);
     }
 
@@ -75,7 +76,9 @@ public class GameManager : Singleton<GameManager>
     {
         switch (sceneId)
         {
-            case 1:
+            case 0:
+                break;
+            default:
                 GameObject mainCanvas = LocateObject("MainGameCanvas");
                 _mainGameCanvas = mainCanvas?.GetComponent<MainGameCanvas>();
                 GameObject playerManager = LocateObject("PlayerManager");
