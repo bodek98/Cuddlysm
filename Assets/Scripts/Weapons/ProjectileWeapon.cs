@@ -28,6 +28,11 @@ public class ProjectileWeapon : ReloadableWeapon
         RefreshWeapon();
     }
 
+    private void OnDisable()
+    {
+        _isBursting = false;
+    }
+
     public override void Attack()
     {
         switch (_fireMode)
