@@ -11,11 +11,10 @@ public class WeaponGUIUpdater : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _magazineAmmoGUI;
     [SerializeField] private TextMeshProUGUI _storageAmmoGUI;
 
-    // Change int to string in arguments. While using building tool -> string = "-"
-    public void UpdateAmmoGUI(int magazineAmmo, int storageAmmo)
+    public void UpdateAmmoGUI(string magazineAmmo, string storageAmmo)
     {
-        _magazineAmmoGUI.text = magazineAmmo.ToString();
-        _storageAmmoGUI.text = storageAmmo.ToString();
+        _magazineAmmoGUI.text = magazineAmmo;
+        _storageAmmoGUI.text = storageAmmo;
     }
 
     public void FillAmmoBar(float fillAmount)

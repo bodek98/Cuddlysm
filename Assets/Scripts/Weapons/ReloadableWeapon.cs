@@ -60,7 +60,7 @@ public abstract class ReloadableWeapon : Weapon
         }
 
         _isReloading = false;
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo.ToString(), _storageAmmo.ToString());
     }
     
     protected void CheckAutoReload()
@@ -73,7 +73,7 @@ public abstract class ReloadableWeapon : Weapon
 
     protected void HandleGUIUpdate()
     {
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo.ToString(), _storageAmmo.ToString());
         _weaponGUIUpdater?.FillAmmoBar(_magazineAmmo > 0 ? (float)_magazineAmmo / (float)_magazineCapacity : 0);
     }
     

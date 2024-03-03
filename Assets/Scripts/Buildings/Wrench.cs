@@ -8,7 +8,7 @@ public class Wrench : BuildingTool
     [SerializeField] private Movement _movement;
     [SerializeField] private GameObject _previewBuilding;
     [SerializeField] private GameObject _buildingObject;
-    [SerializeField] private float _buildDelay = 0.1f;
+    [SerializeField] private float _buildDelay = 5f;
     [SerializeField] private float _buildCost = 50f;
 
     private float _nextTimeToBuild = 0;
@@ -17,6 +17,7 @@ public class Wrench : BuildingTool
     private void OnEnable()
     {
         _weaponGUIUpdater.SetWeaponSprite(sprite);
+        _weaponGUIUpdater.UpdateAmmoGUI("-", "-");
     }
 
     private void Update()
@@ -29,23 +30,36 @@ public class Wrench : BuildingTool
 
     public override void UseTool()
     {
+        bool isReadyToBuild = readyToBuild && Time.time >= _nextTimeToBuild;
+        if (!isReadyToBuild || playerEntity.currentStamina < _buildCost) return;
+
         Build();
+        StartCoroutine(WaitForNextBuildAndUpdateGUI(_buildDelay));
         UpdateStaminaBar();
     }
 
-    private void Build(bool ignoreBuildDelay = false)
+    private void Build()
     {
-        if (!readyToBuild) return;
-
         Vector3 buildPosition = new(_movement.targetPosition.x, 0, _movement.targetPosition.z);
 
-        bool isReadyToBuild = ignoreBuildDelay || Time.time >= _nextTimeToBuild;
-        if (!isReadyToBuild || playerEntity.currentStamina < _buildCost) return;
-        if (!ignoreBuildDelay) _nextTimeToBuild = Time.time + _buildDelay;
+        _nextTimeToBuild = Time.time + _buildDelay;
 
         playerEntity.currentStamina -= _buildCost;
 
         GameObject newBuilding = Instantiate(_buildingObject, buildPosition, transform.rotation);
         newBuilding.layer = gameObject.layer;
+    }
+
+    protected IEnumerator WaitForNextBuildAndUpdateGUI(float duration)
+    {
+        float timePassed = 0f;
+        float animationFrameDelay = 0.01f;
+
+        while (timePassed < duration)
+        {
+            _weaponGUIUpdater.FillAmmoBar(timePassed / duration);
+            yield return new WaitForSeconds(animationFrameDelay);
+            timePassed += animationFrameDelay;
+        }
     }
 }

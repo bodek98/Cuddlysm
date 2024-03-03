@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 90389117}
   - component: {fileID: 90389116}
   m_Layer: 15
-  m_Name: Sprite
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
