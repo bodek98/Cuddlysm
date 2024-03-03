@@ -1596,7 +1596,6 @@ GameObject:
   - component: {fileID: 7984083677299893604}
   - component: {fileID: 2035729652707406548}
   - component: {fileID: 2707964409259692858}
-  - component: {fileID: 8677220278361424593}
   - component: {fileID: 145479699140044857}
   m_Layer: 6
   m_Name: Player
@@ -1803,7 +1802,7 @@ MonoBehaviour:
     m_ActionName: PlayerControlls/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8677220278361424593}
+      - m_Target: {fileID: 2035729652707406548}
         m_TargetAssemblyTypeName: ItemHandling, Assembly-CSharp
         m_MethodName: OnItemScrollSelection
         m_Mode: 0
@@ -1819,7 +1818,7 @@ MonoBehaviour:
     m_ActionName: PlayerControlls/WeaponScrollSelection[/Mouse/scroll/y,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8677220278361424593}
+      - m_Target: {fileID: 2035729652707406548}
         m_TargetAssemblyTypeName: ItemHandling, Assembly-CSharp
         m_MethodName: OnItemNumericalSelection
         m_Mode: 0
@@ -1835,7 +1834,7 @@ MonoBehaviour:
     m_ActionName: PlayerControlls/WeaponNumericalSelection[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5,/Keyboard/6,/Keyboard/7,/Keyboard/8,/Keyboard/9,/Keyboard/0]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8677220278361424593}
+      - m_Target: {fileID: 2035729652707406548}
         m_TargetAssemblyTypeName: ItemHandling, Assembly-CSharp
         m_MethodName: OnWeaponReloading
         m_Mode: 0
@@ -1851,7 +1850,7 @@ MonoBehaviour:
     m_ActionName: PlayerControlls/WeaponReloading[/Keyboard/r,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8677220278361424593}
+      - m_Target: {fileID: 2035729652707406548}
         m_TargetAssemblyTypeName: ItemHandling, Assembly-CSharp
         m_MethodName: OnItemAction
         m_Mode: 0
@@ -1887,7 +1886,7 @@ MonoBehaviour:
     m_ActionName: PlayerControlls/Pause[/Keyboard/escape,/DualSenseGamepadHID/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8677220278361424593}
+      - m_Target: {fileID: 2035729652707406548}
         m_TargetAssemblyTypeName: ItemHandling, Assembly-CSharp
         m_MethodName: OnSwitchMode
         m_Mode: 0
@@ -2038,6 +2037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2583469947934557174, guid: 04957bbf2b3c09e46a49b985dd088b71, type: 3}
       propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
