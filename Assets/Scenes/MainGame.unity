@@ -1718,7 +1718,7 @@ GameObject:
   - component: {fileID: 686921016}
   - component: {fileID: 686921015}
   - component: {fileID: 686921014}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PolyShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3851,7 +3851,7 @@ GameObject:
   - component: {fileID: 973893450}
   - component: {fileID: 973893449}
   - component: {fileID: 973893448}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4198,7 +4198,7 @@ GameObject:
   - component: {fileID: 1008999009}
   - component: {fileID: 1008999008}
   - component: {fileID: 1008999014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7577,7 +7577,7 @@ GameObject:
   - component: {fileID: 1042385955}
   - component: {fileID: 1042385954}
   - component: {fileID: 1042385953}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7923,7 +7923,7 @@ GameObject:
   - component: {fileID: 1054142749}
   - component: {fileID: 1054142748}
   - component: {fileID: 1054142747}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8691,7 +8691,7 @@ GameObject:
   - component: {fileID: 1076977107}
   - component: {fileID: 1076977106}
   - component: {fileID: 1076977105}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PolyShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10542,7 +10542,7 @@ GameObject:
   - component: {fileID: 1317608848}
   - component: {fileID: 1317608847}
   - component: {fileID: 1317608846}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13319,7 +13319,7 @@ GameObject:
   - component: {fileID: 1999465049}
   - component: {fileID: 1999465048}
   - component: {fileID: 1999465047}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
