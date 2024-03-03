@@ -23,10 +23,14 @@ public class BuildableObject : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        _isGround = false;
+        _isCollidingWithObstacle = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.layer);
-        
         if (other.gameObject.layer == 10)
         {
             _isGround = true;
