@@ -1696,6 +1696,7 @@ MonoBehaviour:
   deathPrefab: {fileID: 5285586489234936084, guid: 0f91ddbba0129ad478c19c31dcb9cca1, type: 3}
   attacksOnDeath: 0
   _playerHealthBar: {fileID: 1566611727650058850}
+  _playerStaminaBar: {fileID: 2334999164172028341}
 --- !u!114 &7984083677299893604
 MonoBehaviour:
   m_ObjectHideFlags: 0
