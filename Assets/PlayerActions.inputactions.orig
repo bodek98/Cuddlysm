@@ -69,15 +69,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "8a8dbf7d-8507-4050-a55f-eaff532ef189",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SwitchMode",
                     "type": "Button",
                     "id": "a44f74ad-a66b-41ce-a45f-5c125e4a6bbc",
@@ -172,7 +163,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ItemScrollSelection",
+                    "action": "WeaponScrollSelection",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -183,7 +174,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ItemScrollSelection",
+                    "action": "WeaponScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -193,8 +184,13 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
+<<<<<<< HEAD
+                    "groups": "",
+                    "action": "WeaponScrollSelection",
+=======
                     "groups": "Gamepad",
                     "action": "ItemScrollSelection",
+>>>>>>> b434194 (Rename input actions)
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -398,28 +394,6 @@
                 },
                 {
                     "name": "",
-                    "id": "7647ba79-d793-416e-bcc3-6eedfd642296",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keboard+Mouse",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "064ba17d-8954-42e2-9038-57a74c47f268",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ddf3705f-0725-4767-9405-e5b4669f2cda",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -432,7 +406,7 @@
                 {
                     "name": "",
                     "id": "d9a8f3c5-d9e1-4f26-a460-1322f9a4afe6",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

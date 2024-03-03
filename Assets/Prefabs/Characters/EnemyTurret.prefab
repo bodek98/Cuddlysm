@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  maxStamina: 100
+  currentStamina: 100
   damageCooldownDuration: 0.01
   burnDuration: 0
   burnDamage: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerEntity : Entity
 {
     [SerializeField] private PlayerHealthBar _playerHealthBar;
+    [SerializeField] private PlayerStaminaBar _playerStaminaBar;
     private GameManager _gameManager;
 
     protected override bool CheckIfVulnerable(DamageDealerType damageDealerType)
@@ -18,7 +19,7 @@ public class PlayerEntity : Entity
 
     protected override void HandleAfterDamage()
     {
-        UpdateHealthbar();
+        UpdateHealthBar();
     }
     
     protected override void DeathAnimation()
@@ -36,9 +37,15 @@ public class PlayerEntity : Entity
 
     // New functions
     
-    private void UpdateHealthbar()
+    private void UpdateHealthBar()
     {
         _playerHealthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
+    public void RegenerateStamina(float staminaPoints)
+    {
+        currentStamina = maxStamina;
+        _playerStaminaBar.UpdateStaminaBar(currentStamina, staminaPoints);
     }
     
     public void Start()

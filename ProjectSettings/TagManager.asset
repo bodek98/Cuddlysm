@@ -18,12 +18,12 @@ TagManager:
   - DamagePlayer
   - Enemy
   - DamageEnemy
-  - Obstruction
+  - Ground
   - P1 Cam
   - P2 Cam
   - P3 Cam
   - P4 Cam
-  - 
+  - Obstacle
   - 
   - 
   - 

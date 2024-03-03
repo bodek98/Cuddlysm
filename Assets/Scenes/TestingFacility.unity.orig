@@ -271,8 +271,13 @@ GameObject:
   - component: {fileID: 90389118}
   - component: {fileID: 90389117}
   - component: {fileID: 90389116}
-  m_Layer: 15
+<<<<<<< HEAD
+  m_Layer: 10
   m_Name: Wall
+=======
+  m_Layer: 15
+  m_Name: Sprite
+>>>>>>> 70dac59 (Validity check for building)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

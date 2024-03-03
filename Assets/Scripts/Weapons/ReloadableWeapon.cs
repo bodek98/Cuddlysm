@@ -18,13 +18,6 @@ public abstract class ReloadableWeapon : Weapon
     public void Awake()
     {
         _weaponGUIUpdater = GetComponentInParent<WeaponGUIUpdater>();
-        HandleCustomAwake();
-    }
-
-    // Can but don't have to be override to handle Awake in children
-    void HandleCustomAwake()
-    {
-        
     }
     
     private void OnDisable()
@@ -67,7 +60,7 @@ public abstract class ReloadableWeapon : Weapon
         }
 
         _isReloading = false;
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo.ToString(), _storageAmmo.ToString());
     }
     
     protected void CheckAutoReload()
@@ -80,14 +73,14 @@ public abstract class ReloadableWeapon : Weapon
 
     protected void HandleGUIUpdate()
     {
-        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo, _storageAmmo);
+        _weaponGUIUpdater?.UpdateAmmoGUI(_magazineAmmo.ToString(), _storageAmmo.ToString());
         _weaponGUIUpdater?.FillAmmoBar(_magazineAmmo > 0 ? (float)_magazineAmmo / (float)_magazineCapacity : 0);
     }
     
     protected void RefreshWeapon()
     {
         HandleGUIUpdate();
-        
+
         _weaponGUIUpdater?.SetWeaponSprite(sprite);
 
         if (_isReloading)
