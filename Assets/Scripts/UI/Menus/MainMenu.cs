@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private GameManager _gameManager;
+    [SerializeField] private GameObject _menuCamera;
+    [SerializeField] private GameObject _creditsCamera;
 
     public void Start()
     {
@@ -19,11 +21,19 @@ public class MainMenu : MonoBehaviour
 
     public void OnCreditsButton()
     {
-        Debug.Log("TODO: Credits");
+        _creditsCamera.SetActive(true);
+        _menuCamera.SetActive(false);
     }
 
     public void OnQuitButton()
     {
         Application.Quit();
+    }
+
+    public void OnQuitCreditsButton()
+    {
+        Debug.Log("ELO");
+        _menuCamera.SetActive(true);
+        _creditsCamera.SetActive(false);
     }
 }
