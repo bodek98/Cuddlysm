@@ -19,7 +19,7 @@ public class ItemHandling : MonoBehaviour
 
     void Start()
     {
-        _itemHolder = _buildingHolder;
+        _itemHolder = _gameMode == GameMode.Combat ? _weaponHolder : _buildingHolder;
         _movement = GetComponent<Movement>();
 
         SelectItem();
@@ -89,10 +89,6 @@ public class ItemHandling : MonoBehaviour
                 _weapon.StartReloading();
             }
         }
-        else
-        {
-            return;
-        }   
     }
 
     public void OnItemScrollSelection(InputAction.CallbackContext context)
