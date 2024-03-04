@@ -32,7 +32,6 @@ public class MainMenu : MonoBehaviour
 
     public void OnQuitCreditsButton()
     {
-        Debug.Log("ELO");
         _menuCamera.SetActive(true);
         _creditsCamera.SetActive(false);
     }

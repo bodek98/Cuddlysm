@@ -24,7 +24,6 @@ public class GameManager : Singleton<GameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Loading");
         LoadInGameDependencies(scene.buildIndex);
     }
 
