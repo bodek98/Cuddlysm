@@ -30,7 +30,7 @@ public abstract class ReloadableWeapon : Weapon
     
     public override void StartReloading(bool forceReload = false)
     {
-        if (!forceReload && _isReloading && _storageAmmo <= 0) return;
+        if (!forceReload && (_isReloading || _storageAmmo <= 0 || _magazineAmmo == _magazineCapacity)) return;
         
         StopAttack();
         _reloadingCoroutine = Reload();
