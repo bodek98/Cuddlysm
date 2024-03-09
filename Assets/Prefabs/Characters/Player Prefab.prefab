@@ -1918,6 +1918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 1676635122060752464, guid: eb053a1cdfbf9a94fac1cd9ded16c833, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: eb053a1cdfbf9a94fac1cd9ded16c833, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2145,6 +2149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 1676635122060752464, guid: a59fd4d9d1a5de3448f9ec83ffc8f3e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: a59fd4d9d1a5de3448f9ec83ffc8f3e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2316,6 +2324,10 @@ PrefabInstance:
     - target: {fileID: 1676635122060752464, guid: 0588932337770e84dab397f89354adb5, type: 3}
       propertyPath: m_Name
       value: Flamethrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676635122060752464, guid: 0588932337770e84dab397f89354adb5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3299165521919591047, guid: 0588932337770e84dab397f89354adb5, type: 3}
       propertyPath: m_LocalPosition.x
