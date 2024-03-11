@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a5d1a43d6f1454394b70d82f443308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4282077e4b92bcc4cae227c94ab165cd, type: 3}
+  sprite: {fileID: 21300000, guid: de72f5431d5255346a8b717ca066874d, type: 3}
   _magazineAmmo: 100
   _magazineCapacity: 100
   _storageAmmo: 300
