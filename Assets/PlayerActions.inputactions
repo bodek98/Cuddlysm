@@ -156,6 +156,17 @@
                 },
                 {
                     "name": "",
+                    "id": "23d8d278-298e-4858-b936-79bddfbc88d4",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c42edab1-7aab-4bad-8ef7-b44d0d94b065",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
@@ -354,6 +365,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2c6ec9a0-4343-48cf-9368-368d184363a2",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keboard+Mouse",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "adfd3db1-2d12-4074-aa5d-2d942be8908b",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -365,12 +387,23 @@
                 },
                 {
                     "name": "",
-                    "id": "2c6ec9a0-4343-48cf-9368-368d184363a2",
-                    "path": "<Keyboard>/enter",
+                    "id": "3884f774-c6f6-4c7d-aaa2-bf043ac1f516",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fa88fd2-550f-4eb5-816a-bbf67241a157",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keboard+Mouse",
-                    "action": "Join",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -387,11 +420,11 @@
                 },
                 {
                     "name": "",
-                    "id": "6fa88fd2-550f-4eb5-816a-bbf67241a157",
-                    "path": "<Mouse>/position",
+                    "id": "152f2b2b-1f68-47ea-97f2-30a8162fcc2e",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keboard+Mouse",
+                    "groups": "Mobile",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -470,6 +503,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": []
         }
     ]
 }

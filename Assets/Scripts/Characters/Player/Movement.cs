@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
     {
         string currentControlScheme = _playerInput.currentControlScheme;
 
-        if (currentControlScheme == "Gamepad")
+        if (currentControlScheme == "Gamepad" || currentControlScheme == "Mobile")
         {
             targetPosition = transform.position + new Vector3(_aimInput.x, 0, _aimInput.y) * _buildRange;
 
@@ -73,11 +73,13 @@ public class Movement : MonoBehaviour
     public void OnAim(InputAction.CallbackContext context)
     {
         _aimInput = context.ReadValue<Vector2>();
+        /*Debug.Log("Aim: " + context.ReadValue<Vector2>());*/
     }
 
     public void OnMovement(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
         _moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        Debug.Log(_moveDirection);
     }
 }
