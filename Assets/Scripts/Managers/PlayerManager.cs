@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,10 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         _playerInputManager = FindObjectOfType<PlayerInputManager>();
+#if BUILD_MOBILE
+        GameObject mobilePlayer = Instantiate(_playerInputManager.playerPrefab);
+        AddPlayer(mobilePlayer.GetComponentInChildren<PlayerInput>());
+#endif
     }
 
     private void OnEnable()
