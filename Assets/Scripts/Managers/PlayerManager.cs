@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     {
         _playerInputManager = FindObjectOfType<PlayerInputManager>();
 #if BUILD_MOBILE
+        
         GameObject mobilePlayer = Instantiate(_playerInputManager.playerPrefab);
         PlayerInput playerInput = mobilePlayer.GetComponentInChildren<PlayerInput>();
         playerInput.SwitchCurrentControlScheme("Mobile", Gamepad.current);
