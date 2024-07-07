@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MobileItemAction",
+                    "type": "PassThrough",
+                    "id": "6cb98f94-18f7-4403-9754-e3f47271e821",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -193,7 +202,7 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "ItemScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -208,6 +217,39 @@
                     "action": "ItemScrollSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3d108062-0176-4e37-9142-bc6fb87143dc",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "Mobile",
+                    "action": "ItemNumericalSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76e0814f-4b69-4a8f-9653-49c076a4bfc0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "Mobile",
+                    "action": "ItemNumericalSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "489ef089-3eb2-4ec2-a8b4-b294c6a9d1d2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "Mobile",
+                    "action": "ItemNumericalSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -470,6 +512,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "SwitchMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f51787b9-b057-477c-9816-361b2ababd33",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.825)",
+                    "groups": "Mobile",
+                    "action": "MobileItemAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

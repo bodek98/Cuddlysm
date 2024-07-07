@@ -80,6 +80,18 @@ public class ItemHandling : MonoBehaviour
         }
     }
 
+    public void OnMobileItemAction(InputAction.CallbackContext context)
+    {
+        Vector2 value = context.ReadValue<Vector2>();
+        if (Mathf.Abs(value.x) > 0.9 || Mathf.Abs(value.y) > 0.9)
+        {
+            _weapon.Attack();
+        } else
+        {
+            _weapon.StopAttack();
+        }
+    }
+
     public void OnWeaponReloading(InputAction.CallbackContext context)
     {
         if (_gameMode == GameMode.Combat)
@@ -126,6 +138,7 @@ public class ItemHandling : MonoBehaviour
 
     public void OnItemNumericalSelection(InputAction.CallbackContext context)
     {
+        Debug.Log("Numerical: " + context.ReadValue<float>());
         int numericalSelection = (int)context.ReadValue<float>();
 
         if (numericalSelection >= 1 && numericalSelection <= _itemHolder.transform.childCount)
