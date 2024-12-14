@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2408275410944
-    m_Localized: "Menu G\u0142\xF3wne"
+    m_Localized: Menu Glowne
     m_Metadata:
       m_Items: []
   - m_Id: 2785267843072
@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3066063912960
-    m_Localized: "Aby doda\u0107 graczy, naci\u015Bnij:\n- Klawiatura: Enter\n- Gamepad:
+    m_Localized: "Aby dodac graczy, naci\u015Bnij:\n- Klawiatura: Enter\n- Gamepad:
       Start"
     m_Metadata:
       m_Items: []
