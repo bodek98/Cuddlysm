@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MenuCollection_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: b9b3035a70b262d40ab39376e4d19b81, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 3043666329600
+    m_Localized: Wyjdz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3255570956288
+    m_Localized: Autorzy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3363070967808
+    m_Localized: Rozpocznij
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3457715437568
+    m_Localized: Autorzy
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
