@@ -17,8 +17,6 @@ public class LocaleSelector : MonoBehaviour
     public void ChangeLocale(int _localeID)
     {
         if (active == true) return;
-        Debug.Log("dupa");
-
         StartCoroutine(SetLocale(_localeID));
     }
 
