@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 96bf3e9868dade0488e46a1af4b6e669
-  m_SerializeEntries:
-  - m_GUID: bd1ec9f27c336486e82f8a59df62cdfb
-    m_Address: Assets/LocalSettings/Tables/MainMenuCollections_zh-Hans.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 00b2732e13d75c641a5987a01d93825e, type: 2}
   m_SchemaSet:
